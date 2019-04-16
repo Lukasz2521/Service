@@ -3,10 +3,10 @@
     <!--<router-outlet></router-outlet>-->
     <div class="row">
       <div class="col-md-6">
-        <input type="text" class="form-control" type="type" name="name" placeholder="Szukaj" />
+        <input type="text" class="form-control" name="name" placeholder="Szukaj" />
       </div>
       <div class="col-md-6">
-        <button class="btn btn-primary">Dodaj przegląd</button>
+        <button class="btn btn-primary" (click)="add()">Dodaj przegląd</button>
       </div>
     </div>
     <ngx-datatable
