@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EuroSerwis.Repositories
 {
-    public class InspectionRepository
+    public class InspectionRepository: IInspectionRepository
     {
         private readonly InspectionContext _context;
         public InspectionRepository(InspectionContext context)

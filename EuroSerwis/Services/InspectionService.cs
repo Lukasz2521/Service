@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EuroSerwis.Model;
+using EuroSerwis.Repositories;
 
 namespace EuroSerwis.Services
 {
     public class InspectionService : IInspection
     {
-        public void Add()
+        private readonly IInspectionRepository _inspectionRepository;
+
+        public InspectionService(IInspectionRepository inspectionRepository)
         {
-            throw new NotImplementedException();
+            _inspectionRepository = inspectionRepository;
+        }
+
+        public void Add(Inspection inspection)
+        {
+            _inspectionRepository.Add(inspection);
         }
 
         public void Remove(int id)

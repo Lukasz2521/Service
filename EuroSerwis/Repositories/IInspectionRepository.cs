@@ -4,12 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EuroSerwis.Services
+namespace EuroSerwis.Repositories
 {
-    public interface IInspection
+    public interface IInspectionRepository
     {
         void Add(Inspection inspection);
-        void Remove(int id);
-        void Update(Inspection inspection);
     }
 }

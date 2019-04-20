@@ -1,4 +1,7 @@
+using EuroSerwis.Infrastructure;
 using EuroSerwis.Model;
+using EuroSerwis.Repositories;
+using EuroSerwis.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +26,8 @@ namespace EuroSerwis
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScoped<IInspection, InspectionService>();
+            services.AddScoped<IInspectionRepository, InspectionRepository>();
             services.AddDbContext<InspectionContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

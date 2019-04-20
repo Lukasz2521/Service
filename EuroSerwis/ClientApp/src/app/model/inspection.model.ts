@@ -1,8 +1,10 @@
 export class Inspection {
-  name: string;
-  surname: string;
-  address: string;
-  county: string;
-  date: Date;
-  phoneNumber: string;
+  constructor(
+    public Name: string,
+    public Surname: string,
+    public Address: string,
+    public County: string,
+    public Date: Date,
+    public Phone: string
+   ) { }
 }

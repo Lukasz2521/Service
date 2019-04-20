@@ -17,6 +17,6 @@ namespace EuroSerwis.Model
 
         public DateTime Date { get; set; }
 
-        public string PhoneNumber { get; set; }
+        public string Phone { get; set; }
     }
 }
