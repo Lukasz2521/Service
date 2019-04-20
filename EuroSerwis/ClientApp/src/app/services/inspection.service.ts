@@ -12,6 +12,6 @@ export class InspectionService {
   public get() {
     console.log('service');
 
-    return true; //this.http.get<[]>('api/Inspection/get');
+    return this.http.get('https://localhost:44325/' + 'api/Inspection/Get');
   }
 }

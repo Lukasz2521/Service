@@ -9,30 +9,17 @@ import { InspectionService } from './services/inspection.service';
 })
 export class AppComponent implements OnInit {
 
-    constructor(private inspectionService: InspectionService) {
+  constructor(private inspectionService: InspectionService) {}
 
-    }
+  ngOnInit(): void {
+    this.inspectionService.get().subscribe(null);
+  }
 
-    ngOnInit(): void {
-      this.inspectionService.get();
-    }
+  rows = [
+    { name: 'Austin', surname: 'Male', address: 'Swimlane', clas: 'ddd', date: 'ssss', phone: 'www' }
+  ];
 
-    title = 'app';
-    rows = [
-      { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-      { name: 'Dany', gender: 'Male', company: 'KFC' },
-      { name: 'Molly', gender: 'Female', company: 'Burger King' },
-    ];
-    columns = [
-      { prop: 'Imię' },
-      { name: 'Nazwisko' },
-      { name: 'Adres' },
-      { name: 'clas' },
-      { name: 'Data przeglądu' },
-      { name: 'Numer kontaktowy' }
-    ];
+  add() {
 
-    add() {
-
-    }
+  }
 }
