@@ -1,5 +1,6 @@
 ﻿using EuroSerwis.Infrastructure;
 using EuroSerwis.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,17 @@ namespace EuroSerwis.Repositories
             _context = context;
         }
 
-        public void Add(Inspection inspection)
+        public async Task Add(Inspection inspection)
         {
-            _context.Inspections.Add(inspection);
+           await _context.Inspections.AddAsync(inspection);
+           await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Inspection>> Get()
+        {
+            var inspections = await _context.Inspections.ToListAsync();
+
+            return inspections;
         }
     }
 }

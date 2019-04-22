@@ -8,6 +8,7 @@ namespace EuroSerwis.Repositories
 {
     public interface IInspectionRepository
     {
-        void Add(Inspection inspection);
+        Task Add(Inspection inspection);
+        Task<IEnumerable<Inspection>> Get();
     }
 }

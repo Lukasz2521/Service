@@ -1,4 +1,5 @@
 using EuroSerwis.Infrastructure;
+using EuroSerwis.Mappers;
 using EuroSerwis.Model;
 using EuroSerwis.Repositories;
 using EuroSerwis.Services;
@@ -26,6 +27,7 @@ namespace EuroSerwis
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSingleton(AutoMapperConfig.Initialize());
             services.AddScoped<IInspection, InspectionService>();
             services.AddScoped<IInspectionRepository, InspectionRepository>();
             services.AddDbContext<InspectionContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
@@ -48,6 +50,12 @@ namespace EuroSerwis
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+            }
+
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<InspectionContext>();
+                context.Database.EnsureCreated();
             }
 
             app.UseHttpsRedirection();

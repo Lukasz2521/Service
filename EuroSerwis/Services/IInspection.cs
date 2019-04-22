@@ -1,4 +1,5 @@
-﻿using EuroSerwis.Model;
+﻿using EuroSerwis.DTO;
+using EuroSerwis.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,8 @@ namespace EuroSerwis.Services
 {
     public interface IInspection
     {
-        void Add(Inspection inspection);
+        Task Add(InspectionDTO inspection);
+        Task<IEnumerable<InspectionDTO>> Get();
         void Remove(int id);
         void Update(Inspection inspection);
     }

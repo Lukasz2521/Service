@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EuroSerwis.DTO;
 using EuroSerwis.Model;
 using EuroSerwis.Services;
 using Microsoft.AspNetCore.Http;
@@ -21,18 +22,20 @@ namespace EuroSerwis.Controllers
         }
 
         [HttpPost("[action]")]
-        public ActionResult Add([FromBody]Inspection inspection)
+        public async Task<ActionResult> Add([FromBody]InspectionDTO inspection)
         {
-            _inspection.Add(inspection);
+            await _inspection.Add(inspection);
 
             return StatusCode(200);
         }
 
 
         [HttpGet("[action]")]
-        public Inspection Get()
+        public async Task<IEnumerable<InspectionDTO>> Get()
         {
-            return new Inspection();
+            var inspections = await _inspection.Get();
+
+            return inspections;
         }
     }
 }

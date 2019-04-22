@@ -11,7 +11,6 @@ namespace EuroSerwis.Infrastructure
     {
         public InspectionContext(DbContextOptions<InspectionContext> options) : base(options)
         {
-
         }
 
         public DbSet<Inspection> Inspections { get; set; }

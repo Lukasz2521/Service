@@ -9,20 +9,18 @@ import { Inspection } from './model/inspection.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  rows: [] = [];
 
   constructor(private inspectionService: InspectionService) {}
 
   ngOnInit(): void {
-    this.inspectionService.get().subscribe(null);
+    this.inspectionService.get().subscribe((inspections: []) => {
+      this.rows = inspections;
+    });
   }
 
-  rows = [
-    { name: 'Austin', surname: 'Male', address: 'Swimlane', clas: 'ddd', date: 'ssss', phone: 'www' }
-  ];
-
   add() {
-    let inspection = new Inspection(
-      'Lukasz', 'Radecki', 'Karola Szwanke', 'Ciechanowski', '666 666 666')
+    let inspection = new Inspection();
 
     this.inspectionService.add(inspection).subscribe(null);
   }
