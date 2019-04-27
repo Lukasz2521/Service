@@ -11,8 +11,6 @@ export class InspectionService {
   constructor(private http: HttpClient) { }
 
   public get() {
-    console.log('service');
-
     return this.http.get('https://localhost:44325/' + 'api/Inspection/Get');
   }
 

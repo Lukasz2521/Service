@@ -6,10 +6,14 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InspectionsComponent } from './components/inspections/inspections.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InspectionsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -17,10 +21,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     NgxDatatableModule,
     NgbModule,
-    //RouterModule.forRoot([
-    //  //{ path: '', component: HomeComponent, pathMatch: 'full' },
-    //  //{ path: 'counter', component: CounterComponent },
-    //])
+    RouterModule.forRoot([
+      { path: '', component: InspectionsComponent, pathMatch: 'full' },
+      { path: 'login', component: LoginComponent },
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
