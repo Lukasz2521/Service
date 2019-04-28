@@ -8,52 +8,105 @@
 <div class="container inspection-container">
   <div class="row">
     <div class="col-md-6">
-      <input type="text" class="form-control" name="name" placeholder="Szukaj" />
+      <input (keyup)='search($event)'
+             type="text"
+             class="form-control"
+             name="name"
+             placeholder="Szukaj" />
     </div>
     <div class="col-md-6">
-      <button class="btn btn-primary" (click)="add()">Dodaj przegląd</button>
+      <button class="btn btn-primary" (click)="add(content)">Dodaj przegląd</button>
     </div>
   </div>
-    <ngx-datatable class="bootstrap"
-                   [rows]="rows"
-                   [columnMode]="'force'"
-                   [headerHeight]="50"
-                   [rowHeight]="60">
-      <ngx-datatable-column name="Imię" minWidth="80">
-        <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-          {{ row.name }}
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="Nazwisko" minWidth="80">
-        <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-          {{ row.surname }}
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="Adres" minWidth="80">
-        <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-          {{ row.address }}
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="Data przeglądu" minWidth="80">
-        <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-          {{ row.date }}
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="Numer telefonu" minWidth="80">
-        <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-          {{ row.phone }}
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column minWidth="80">
-        <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-          <button class="btn btn-primary">edytuj</button>
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column minWidth="80">
-        <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-          <button class="btn btn-danger">usuń</button>
-        </ng-template>
-      </ngx-datatable-column>
-    </ngx-datatable>
+  <ngx-datatable class="bootstrap"
+                [rows]="rows"
+                [columnMode]="'force'"
+                [headerHeight]="50"
+                [rowHeight]="60">
+    <ngx-datatable-column name="Imię" minWidth="80">
+      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+        {{ row.name }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Nazwisko" minWidth="80">
+      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+        {{ row.surname }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Adres" minWidth="80">
+      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+        {{ row.address }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Data przeglądu" minWidth="80">
+      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+        {{ row.date }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Numer telefonu" minWidth="80">
+      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+        {{ row.phone }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column minWidth="80">
+      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+        <button class="btn btn-primary">edytuj</button>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column minWidth="80">
+      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+        <button class="btn btn-danger">usuń</button>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
 </div>
 
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Dodaj przegląd</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label>Imię</label>
+        <input type="text" placeholder="Imię" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Nazwisko</label>
+        <input type="text" placeholder="Nazwisko" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Adres</label>
+        <input type="text" placeholder="Adres" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Powiat</label>
+        <input type="text" placeholder="Powiat" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="dateOfBirth">Data przeglądu</label>
+        <div class="input-group">
+          <input id="dateOfBirth"
+                 class="form-control"
+                 placeholder="dd-mm-yyyy"
+                 name="dp"
+                 ngbDatepicker
+                 #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Telefon</label>
+        <input type="text" placeholder="Telefon" class="form-control" />
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>

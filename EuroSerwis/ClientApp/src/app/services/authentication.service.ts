@@ -10,14 +10,6 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  //public get() {
-  //  return this.http.get('https://localhost:44325/' + 'api/Inspection/Get');
-  //}
-
-  //public add(inspection: Inspection) {
-  //  return this.http.post('https://localhost:44325/' + 'api/Inspection/Add', inspection);
-  //}
-
   logIn() {
 
   }
