@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { InspectionService } from '../../services/inspection.service';
 import { Inspection } from '../../model/inspection.model';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'inspections',
@@ -11,6 +12,14 @@ import { Inspection } from '../../model/inspection.model';
 export class InspectionsComponent implements OnInit {
   rows: Inspection[] = [];
   temp: Inspection[] = [];
+  inspectionForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    surname: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required),
+    county: new FormControl('', Validators.required),
+    date: new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required)
+  });
 
   constructor(private inspectionService: InspectionService, private modalService: NgbModal) { }
 
@@ -19,6 +28,7 @@ export class InspectionsComponent implements OnInit {
       this.rows = inspections;
       this.temp = inspections;
     });
+
   }
 
   add(content) {
@@ -28,6 +38,10 @@ export class InspectionsComponent implements OnInit {
  
     });
     //this.inspectionService.add(inspection).subscribe(null);
+  }
+
+  onSubmit() {
+    console.log(this.inspectionForm.value);
   }
 
   search(event) {

@@ -69,34 +69,50 @@
     </button>
   </div>
   <div class="modal-body">
-    <form>
+    <form [formGroup]="inspectionForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label>Imię</label>
-        <input type="text" placeholder="Imię" class="form-control" />
+        <input formControlName="name"
+               type="text"
+               placeholder="Imię"
+               class="form-control" />
       </div>
       <div class="form-group">
         <label>Nazwisko</label>
-        <input type="text" placeholder="Nazwisko" class="form-control" />
+        <input formControlName="surname"
+               type="text"
+               placeholder="Nazwisko"
+               class="form-control" />
       </div>
       <div class="form-group">
         <label>Adres</label>
-        <input type="text" placeholder="Adres" class="form-control" />
+        <input formControlName="address"
+               type="text"
+               placeholder="Adres"
+               class="form-control" />
       </div>
       <div class="form-group">
         <label>Powiat</label>
-        <input type="text" placeholder="Powiat" class="form-control" />
+        <input formControlName="county"
+               type="text"
+               placeholder="Powiat"
+               class="form-control" />
       </div>
       <div class="form-group">
         <label for="dateOfBirth">Data przeglądu</label>
         <div class="input-group">
-          <input id="dateOfBirth"
+          <input formControlName="date"
+                 id="dateOfBirth"
                  class="form-control"
                  placeholder="dd-mm-yyyy"
                  name="dp"
                  ngbDatepicker
                  #dp="ngbDatepicker">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            <button class="btn btn-outline-secondary calendar"
+                    type="submit"
+                    (click)="dp.toggle()">
+            </button>
           </div>
         </div>
       </div>
@@ -104,9 +120,16 @@
         <label>Telefon</label>
         <input type="text" placeholder="Telefon" class="form-control" />
       </div>
+      <div>
+        {{ inspectionForm.value }}
+      </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    <button type="button"
+            class="btn btn-outline-dark"
+            (click)="modal.close('Save click')">
+      Save
+    </button>
   </div>
 </ng-template>
