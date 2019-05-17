@@ -28,11 +28,10 @@ export class InspectionsComponent implements OnInit {
       this.rows = inspections;
       this.temp = inspections;
     });
-
   }
 
   add(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+    this.modalService.open(content).result.then((result) => {
 
     }, (reason) => {
  
