@@ -24,6 +24,7 @@
     "@angular/router": "6.1.10",
     "@ng-bootstrap/ng-bootstrap": "^4.1.1",
     "@nguniversal/module-map-ngfactory-loader": "6.0.0",
+    "@schematics/angular": "^7.3.9",
     "@swimlane/ngx-datatable": "^14.0.0",
     "aspnet-prerendering": "^3.0.1",
     "bootstrap": "^4.3.1",

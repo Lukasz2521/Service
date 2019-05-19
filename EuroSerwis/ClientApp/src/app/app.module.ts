@@ -6,14 +6,16 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { InspectionsComponent } from './components/inspections/inspections.component';
-import { LoginComponent } from './components/login/login.component';
+import { InspectionsComponent } from './pages/inspections/inspections.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AddInspectionComponent } from './components/modals/add-inspection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InspectionsComponent,
-    LoginComponent
+    LoginComponent,
+    AddInspectionComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -28,6 +30,7 @@ import { LoginComponent } from './components/login/login.component';
     ])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddInspectionComponent]
 })
 export class AppModule { }

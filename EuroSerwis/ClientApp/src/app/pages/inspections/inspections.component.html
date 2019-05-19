@@ -15,7 +15,7 @@
              placeholder="Szukaj" />
     </div>
     <div class="col-md-6">
-      <button class="btn btn-primary" (click)="add(content)">Dodaj przegląd</button>
+      <button class="btn btn-primary" (click)="add()">Dodaj przegląd</button>
     </div>
   </div>
   <ngx-datatable class="bootstrap"
@@ -61,72 +61,4 @@
   </ngx-datatable>
 </div>
 
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Dodaj przegląd</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form [formGroup]="inspectionForm" (ngSubmit)="onSubmit()" novalidate>
-      <div class="form-group">
-        <label>Imię</label>
-        <input formControlName="name"
-               type="text"
-               placeholder="Imię"
-               class="form-control" />
-      </div>
-      <div class="form-group">
-        <label>Nazwisko</label>
-        <input formControlName="surname"
-               type="text"
-               placeholder="Nazwisko"
-               class="form-control" />
-      </div>
-      <div class="form-group">
-        <label>Adres</label>
-        <input formControlName="address"
-               type="text"
-               placeholder="Adres"
-               class="form-control" />
-      </div>
-      <div class="form-group">
-        <label>Powiat</label>
-        <input formControlName="county"
-               type="text"
-               placeholder="Powiat"
-               class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="dateOfBirth">Data przeglądu</label>
-        <div class="input-group">
-          <input formControlName="date"
-                 id="dateOfBirth"
-                 class="form-control"
-                 placeholder="dd-mm-yyyy"
-                 name="dp"
-                 ngbDatepicker
-                 #dp="ngbDatepicker">
-          <div class="input-group-append">
-            <a class="btn btn-outline-secondary calendar"
-                    (click)="dp.toggle()">
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Telefon</label>
-        <input formControlName="phone"
-               type="text"
-               placeholder="Telefon"
-               class="form-control" />
-      </div>
-      <button type="submit"
-              class="btn btn-outline-dark"
-              [disabled]="!inspectionForm.valid">
-        Dodaj
-      </button>
-    </form>
-  </div>
-</ng-template>
+
