@@ -29,6 +29,7 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\components\inspections.component.ts" />
     <None Remove="ClientApp\src\app\components\modals\add-inspection.component.ts" />
+    <None Remove="ClientApp\src\app\components\modals\edit-inspection.component.ts" />
     <None Remove="ClientApp\src\app\enums\modal-type.enum.ts" />
     <None Remove="ClientApp\src\app\pages\login\login.component.ts" />
     <None Remove="ClientApp\src\app\model\inspection.model.ts" />
@@ -39,6 +40,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\components\modals\add-inspection.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\modals\edit-inspection.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\enums\modal-type.enum.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\inspections\inspections.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\login\login.component.ts" />

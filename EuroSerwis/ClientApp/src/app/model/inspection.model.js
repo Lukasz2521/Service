@@ -1,15 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Inspection = /** @class */ (function () {
-    function Inspection(name, surname, address, county, date, phone) {
-        this.name = name;
-        this.surname = surname;
-        this.address = address;
-        this.county = county;
-        this.date = date;
-        this.phone = phone;
+var InspectionModel = /** @class */ (function () {
+    function InspectionModel() {
     }
-    return Inspection;
+    return InspectionModel;
 }());
-exports.Inspection = Inspection;
+exports.default = InspectionModel;
 //# sourceMappingURL=inspection.model.js.map

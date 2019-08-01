@@ -1,10 +1,8 @@
-export class Inspection {
-  constructor(
-    public name: string,
-    public surname: string,
-    public address: string,
-    public county: string,
-    public date: Date,
-    public phone: string
-   ) { }
+export default class InspectionModel {
+  public Name: string;
+  public Surname: string;
+  public Address: string;
+  public County: string;
+  public Date: string;
+  public Phone: string;
 }
