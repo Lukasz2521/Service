@@ -28,5 +28,25 @@ namespace EuroSerwis.Repositories
 
             return inspections;
         }
+
+        public async Task Update(Inspection inspection)
+        {
+            try
+            {
+                var ins =  await _context.Inspections.SingleAsync(i => i.Id == inspection.Id);
+
+                if(ins == null)
+                {
+                    throw new NullReferenceException();
+                }
+
+                ins = inspection;
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                _context.Dispose();
+            }
+        }
     }
 }

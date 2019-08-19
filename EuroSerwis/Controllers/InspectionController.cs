@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using EuroSerwis.DTO;
 using EuroSerwis.Model;
 using EuroSerwis.Services;
@@ -15,9 +16,11 @@ namespace EuroSerwis.Controllers
     public class InspectionController : ControllerBase
     {
         private readonly IInspection _inspection;
+        private readonly IMapper _mapper;
 
-        public InspectionController(IInspection inspection)
+        public InspectionController(IMapper mapper, IInspection inspection)
         {
+            _mapper = mapper;
             _inspection = inspection;
         }
 
@@ -36,6 +39,13 @@ namespace EuroSerwis.Controllers
             var inspections = await _inspection.Get();
 
             return inspections;
+        }
+
+        public async Task<IActionResult> Update([FromBody]InspectionDTO inspection)
+        {
+            await _inspection.Update(_mapper.Map<InspectionDTO, Inspection>(inspection));
+
+            return Ok();
         }
     }
 }

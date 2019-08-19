@@ -32,14 +32,14 @@ namespace EuroSerwis.Services
         }
 
 
-        public void Remove(int id)
+        public async Task Remove(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Inspection inspection)
+        public async Task Update(InspectionDTO inspection)
         {
-            throw new NotImplementedException();
+            await _inspectionRepository.Update(_mapper.Map<InspectionDTO, Inspection>(inspection));
         }
     }
 }

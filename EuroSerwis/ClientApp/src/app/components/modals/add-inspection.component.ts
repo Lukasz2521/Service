@@ -10,9 +10,11 @@ import { InspectionService } from '../../services/inspection.service';
 })
 export class AddInspectionComponent implements OnInit {
   inspectionForm: FormGroup;
+  inspection: InspectionModel;
   get f() { return this.inspectionForm.controls; }
 
-  constructor(public activeModal: NgbActiveModal, private inspectionService: InspectionService) { }
+  constructor(public activeModal: NgbActiveModal,
+    private inspectionService: InspectionService) { }
 
   ngOnInit() {
     this.inspectionForm = new FormGroup({

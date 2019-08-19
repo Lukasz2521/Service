@@ -11,7 +11,7 @@ namespace EuroSerwis.Services
     {
         Task Add(InspectionDTO inspection);
         Task<IEnumerable<InspectionDTO>> Get();
-        void Remove(int id);
-        void Update(Inspection inspection);
+        Task Remove(int id);
+        Task Update(InspectionDTO inspection);
     }
 }

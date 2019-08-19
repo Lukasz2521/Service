@@ -10,5 +10,6 @@ namespace EuroSerwis.Repositories
     {
         Task Add(Inspection inspection);
         Task<IEnumerable<Inspection>> Get();
+        Task Update(Inspection inspection);
     }
 }

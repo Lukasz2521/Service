@@ -50,7 +50,7 @@
     </ngx-datatable-column>
     <ngx-datatable-column minWidth="80">
       <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-        <button class="btn btn-primary">edytuj</button>
+        <button (click)="edit(row)" class="btn btn-primary">edytuj</button>
       </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column minWidth="80">

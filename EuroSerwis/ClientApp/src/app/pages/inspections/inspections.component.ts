@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { InspectionService } from '../../services/inspection.service';
-import { Inspection } from '../../model/inspection.model';
+import  InspectionModel from '../../model/inspection.model';
 import { ModalService } from '../../services/modal.service';
 import { ModalType } from '../../enums/modal-type.enum';
 
@@ -9,13 +9,13 @@ import { ModalType } from '../../enums/modal-type.enum';
   templateUrl: './inspections.component.html'
 })
 export class InspectionsComponent implements OnInit, OnDestroy {
-  rows: Inspection[] = [];
-  temp: Inspection[] = [];
+  rows: InspectionModel[] = [];
+  temp: InspectionModel[] = [];
 
   constructor(private inspectionService: InspectionService, private modalService: ModalService) { }
 
   ngOnInit(): void {
-    this.inspectionService.get().subscribe((inspections: Inspection[]) => {
+    this.inspectionService.get().subscribe((inspections: InspectionModel[]) => {
       this.rows = inspections;
       this.temp = inspections;
     });
@@ -29,22 +29,22 @@ export class InspectionsComponent implements OnInit, OnDestroy {
     this.modalService.get(ModalType.AddInspection);
   }
 
-  onAdd(event) {
-    console.log(event);
+  edit(inspection: InspectionModel) {
+    this.modalService.get(ModalType.EditInspection, inspection);
   }
 
   remove() {
-
+    this.modalService.get(ModalType.EditInspection)
   }
 
   search(event) {
     const val = event.target.value.toLowerCase();
 
-    const temp = this.temp.filter(function (insp: Inspection) {
-      return insp.name.toLowerCase().indexOf(val) !== -1
-        || insp.surname.toLowerCase().indexOf(val) !== -1
-        || insp.county.toLowerCase().indexOf(val) !== -1
-        || insp.address.toLowerCase().indexOf(val) !== -1
+    const temp = this.temp.filter(function (insp: InspectionModel) {
+      return insp.Name.toLowerCase().indexOf(val) !== -1
+        || insp.Surname.toLowerCase().indexOf(val) !== -1
+        || insp.County.toLowerCase().indexOf(val) !== -1
+        || insp.Address.toLowerCase().indexOf(val) !== -1
         || !val;
     });
 

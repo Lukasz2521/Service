@@ -9,13 +9,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InspectionsComponent } from './pages/inspections/inspections.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AddInspectionComponent } from './components/modals/add-inspection.component';
+import { EditInspectionComponent } from './components/modals/edit-inspection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InspectionsComponent,
     LoginComponent,
-    AddInspectionComponent
+    AddInspectionComponent,
+    EditInspectionComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,6 +33,9 @@ import { AddInspectionComponent } from './components/modals/add-inspection.compo
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AddInspectionComponent]
+  entryComponents: [
+    AddInspectionComponent,
+    EditInspectionComponent
+  ]
 })
 export class AppModule { }

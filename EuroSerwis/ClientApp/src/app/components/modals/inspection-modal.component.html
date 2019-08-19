@@ -18,6 +18,7 @@
       <div class="form-group">
         <label>Imię</label>
         <input formControlName="Name"
+               [(ngModel)]="inspection.Name"
                name="Name"
                type="text"
                placeholder="Imię"
@@ -30,6 +31,7 @@
       <div class="form-group">
         <label>Nazwisko</label>
         <input formControlName="Surname"
+               [(ngModel)]="inspection.Surname"
                name="Surname"
                type="text"
                placeholder="Nazwisko"
@@ -42,6 +44,7 @@
       <div class="form-group">
         <label>Adres</label>
         <input formControlName="Address"
+               [(ngModel)]="inspection.Address"
                name="Address"
                type="text"
                placeholder="Adres"
@@ -54,6 +57,7 @@
       <div class="form-group">
         <label>Powiat</label>
         <input formControlName="County"
+               [(ngModel)]="inspection.County"
                type="text"
                name="County"
                placeholder="Powiat"
@@ -67,6 +71,7 @@
         <label for="dateOfBirth">Data przeglądu</label>
         <div class="input-group">
           <input formControlName="Date"
+                 [(ngModel)]="inspection.Date"
                  id="dateOfBirth"
                  class="form-control"
                  placeholder="dd-mm-yyyy"
@@ -88,6 +93,7 @@
       <div class="form-group">
         <label>Telefon</label>
         <input formControlName="Phone"
+               [(ngModel)]="inspection.Phone"
                name="Phone"
                type="text"
                placeholder="Telefon"

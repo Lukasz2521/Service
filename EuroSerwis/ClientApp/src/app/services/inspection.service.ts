@@ -17,4 +17,8 @@ export class InspectionService {
   public add(inspection: InspectionModel) {
     return this.http.post('https://localhost:44325/' + 'api/Inspection/Add', inspection);
   }
+
+  public update(inspection: InspectionModel) {
+    return this.http.put<InspectionModel>('https://localhost:44325/' + 'api/Inspection/Update', inspection)
+  }
 }
