@@ -17,89 +17,89 @@
           novalidate>
       <div class="form-group">
         <label>Imię</label>
-        <input formControlName="Name"
-               [(ngModel)]="inspection.Name"
-               name="Name"
+        <input formControlName="name"
+               [(ngModel)]="inspection.name"
+               name="name"
                type="text"
                placeholder="Imię"
                class="form-control"
-               [ngClass]="{ 'form-error': f.Name.invalid && f.Name.touched }" />
-        <div *ngIf="f.Name.invalid && f.Name.touched" class="alert alert-danger">
+               [ngClass]="{ 'form-error': f.name.invalid && f.name.touched }" />
+        <div *ngIf="f.name.invalid && f.name.touched" class="alert alert-danger">
           Imię jest wymagane
         </div>
       </div>
       <div class="form-group">
         <label>Nazwisko</label>
-        <input formControlName="Surname"
-               [(ngModel)]="inspection.Surname"
+        <input formControlName="surname"
+               [(ngModel)]="inspection.surname"
                name="Surname"
                type="text"
                placeholder="Nazwisko"
                class="form-control"
-               [ngClass]="{ 'form-error': f.Surname.invalid && f.Surname.touched }" />
-        <div *ngIf="f.Surname.invalid && f.Surname.touched" class="alert alert-danger">
+               [ngClass]="{ 'form-error': f.surname.invalid && f.surname.touched }" />
+        <div *ngIf="f.surname.invalid && f.surname.touched" class="alert alert-danger">
           Nazwisko jest wymagane
         </div>
       </div>
       <div class="form-group">
         <label>Adres</label>
-        <input formControlName="Address"
-               [(ngModel)]="inspection.Address"
-               name="Address"
+        <input formControlName="address"
+               [(ngModel)]="inspection.address"
+               name="address"
                type="text"
                placeholder="Adres"
                class="form-control"
-               [ngClass]="{ 'form-error': f.Address.invalid && f.Address.touched }" />
-        <div *ngIf="f.Address.invalid && f.Address.touched" class="alert alert-danger">
+               [ngClass]="{ 'form-error': f.address.invalid && f.address.touched }" />
+        <div *ngIf="f.address.invalid && f.address.touched" class="alert alert-danger">
           Adres jest wymagany
         </div>
       </div>
       <div class="form-group">
         <label>Powiat</label>
-        <input formControlName="County"
-               [(ngModel)]="inspection.County"
+        <input formControlName="county"
+               [(ngModel)]="inspection.county"
                type="text"
-               name="County"
+               name="county"
                placeholder="Powiat"
                class="form-control"
-               [ngClass]="{ 'form-error': f.County.invalid && f.County.touched }" />
-        <div *ngIf="f.County.invalid && f.County.touched" class="alert alert-danger">
+               [ngClass]="{ 'form-error': f.county.invalid && f.county.touched }" />
+        <div *ngIf="f.county.invalid && f.county.touched" class="alert alert-danger">
           Powiat jest wymagany
         </div>
       </div>
       <div class="form-group">
         <label for="dateOfBirth">Data przeglądu</label>
         <div class="input-group">
-          <input formControlName="Date"
-                 [(ngModel)]="inspection.Date"
+          <input formControlName="date"
+                 [(ngModel)]="inspection.date"
                  id="dateOfBirth"
                  class="form-control"
                  placeholder="dd-mm-yyyy"
-                 name="Date"
+                 name="date"
                  ngbDatepicker
                  #dp="ngbDatepicker"
-                 [ngClass]="{ 'form-error': f.Date.invalid && f.Date.touched }">
+                 [ngClass]="{ 'form-error': f.date.invalid && f.date.touched }">
           <div class="input-group-append">
             <a class="btn btn-outline-secondary calendar"
                (click)="dp.toggle()"
-               [ngClass]="{ 'form-error': f.Date.invalid && f.Date.touched }">
+               [ngClass]="{ 'form-error': f.date.invalid && f.date.touched }">
             </a>
           </div>
         </div>
-        <div *ngIf="f.Date.invalid && f.Date.touched" class="alert alert-danger">
+        <div *ngIf="f.date.invalid && f.date.touched" class="alert alert-danger">
           Data jest wymagane
         </div>
       </div>
       <div class="form-group">
         <label>Telefon</label>
-        <input formControlName="Phone"
-               [(ngModel)]="inspection.Phone"
-               name="Phone"
+        <input formControlName="phone"
+               [(ngModel)]="inspection.phone"
+               name="phone"
                type="text"
                placeholder="Telefon"
                class="form-control"
-               [ngClass]="{ 'form-error': f.Phone.invalid && f.Phone.touched }" />
-        <div *ngIf="f.Phone.invalid && f.Phone.touched" class="alert alert-danger">
+               [ngClass]="{ 'form-error': f.phone.invalid && f.phone.touched }" />
+        <div *ngIf="f.phone.invalid && f.phone.touched" class="alert alert-danger">
           Telefon jest wymagany
         </div>
       </div>

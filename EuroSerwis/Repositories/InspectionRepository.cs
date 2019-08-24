@@ -33,20 +33,21 @@ namespace EuroSerwis.Repositories
         {
             try
             {
-                var ins =  await _context.Inspections.SingleAsync(i => i.Id == inspection.Id);
-
-                if(ins == null)
-                {
-                    throw new NullReferenceException();
-                }
-
-                ins = inspection;
+                _context.Inspections.Update(inspection);
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
+                
                 _context.Dispose();
             }
+        }
+
+        public async Task Remove(int id)
+        {
+            var inspection = _context.Inspections.Single(i => i.Id == id);
+            _context.Inspections.Remove(inspection);
+            await _context.SaveChangesAsync();
         }
     }
 }

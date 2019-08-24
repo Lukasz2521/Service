@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { InspectionService } from '../../services/inspection.service';
 import InspectionModel from '../../model/inspection.model';
@@ -17,22 +17,27 @@ export class EditInspectionComponent implements OnInit {
     private inspectionService: InspectionService) { }
 
   ngOnInit() {
-    //this.inspection = new InspectionModel();
     this.inspectionForm = new FormGroup({
-      Name: new FormControl('', Validators.required),
-      Surname: new FormControl('', Validators.required),
-      Address: new FormControl('', Validators.required),
-      County: new FormControl('', Validators.required),
-      Date: new FormControl('', Validators.required),
-      Phone: new FormControl('', Validators.required)
+      name: new FormControl('', Validators.required),
+      surname: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      county: new FormControl('', Validators.required),
+      date: new FormControl('', Validators.required),
+      phone: new FormControl('', Validators.required)
     });
   }
 
   onSubmit() {
     if (this.inspectionForm.valid) {
-      this.inspectionService.update(this.inspectionForm.value).subscribe();
+      this.inspection.date = this.getDate();
+      this.inspectionService.update(this.inspection).subscribe();
       this.activeModal.close();
     }
+  }
+
+  getDate() {
+    const date = this.inspectionForm.value.date as NgbDateStruct;
+    return new Date(date.year, date.month - 1, date.day).toJSON();
   }
 
   close() {

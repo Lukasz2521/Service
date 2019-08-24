@@ -19,6 +19,10 @@ export class InspectionService {
   }
 
   public update(inspection: InspectionModel) {
-    return this.http.put<InspectionModel>('https://localhost:44325/' + 'api/Inspection/Update', inspection)
+    return this.http.put<InspectionModel>('https://localhost:44325/' + 'api/Inspection/Update', inspection);
+  }
+
+  public remove(id: number) {
+    return this.http.delete<InspectionModel>('https://localhost:44325/' + 'api/Inspection/Remove/' + id);
   }
 }

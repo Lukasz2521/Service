@@ -16,11 +16,9 @@ namespace EuroSerwis.Controllers
     public class InspectionController : ControllerBase
     {
         private readonly IInspection _inspection;
-        private readonly IMapper _mapper;
 
         public InspectionController(IMapper mapper, IInspection inspection)
         {
-            _mapper = mapper;
             _inspection = inspection;
         }
 
@@ -41,9 +39,18 @@ namespace EuroSerwis.Controllers
             return inspections;
         }
 
+        [HttpPut("[action]")]
         public async Task<IActionResult> Update([FromBody]InspectionDTO inspection)
         {
-            await _inspection.Update(_mapper.Map<InspectionDTO, Inspection>(inspection));
+            await _inspection.Update(inspection);
+
+            return Ok();
+        }
+
+        [HttpDelete("[action]/{id}")]
+        public async Task<IActionResult> Remove(int id)
+        {
+            await _inspection.Remove(id);
 
             return Ok();
         }

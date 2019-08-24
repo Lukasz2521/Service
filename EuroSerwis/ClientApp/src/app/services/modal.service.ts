@@ -13,21 +13,19 @@ export class ModalService {
   constructor(private modalService: NgbModal) { }
 
   public get(modalType: ModalType, model: any = null) {
+    let modal;
+    
     switch (modalType) {
-      case ModalType.AddInspection:
-        //this.open(AddInspectionComponent, model);
+      case ModalType.AddInspection: {
+        modal = this.modalService.open(AddInspectionComponent);
+        (modal.componentInstance as AddInspectionComponent).inspection = new InspectionModel();
         break;
-      case ModalType.EditInspection:
-        let inspection: InspectionModel = new InspectionModel();
-        inspection.Name = model.name;
-        inspection.Surname = model.surname;
-        inspection.Address = model.address;
-        inspection.County = model.county;
-        inspection.Phone = model.phone;
-        inspection.Date = model.date;
-        let modal = this.modalService.open(EditInspectionComponent);
-        (modal.componentInstance as EditInspectionComponent).inspection = inspection;
+      }
+      case ModalType.EditInspection: {
+        modal = this.modalService.open(EditInspectionComponent);
+        (modal.componentInstance as EditInspectionComponent).inspection = model;
         break;
+      }
     }
   }
 }

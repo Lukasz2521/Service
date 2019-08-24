@@ -34,7 +34,7 @@ namespace EuroSerwis.Services
 
         public async Task Remove(int id)
         {
-            throw new NotImplementedException();
+            await _inspectionRepository.Remove(id);
         }
 
         public async Task Update(InspectionDTO inspection)

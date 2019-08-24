@@ -12,7 +12,8 @@ export class InspectionsComponent implements OnInit, OnDestroy {
   rows: InspectionModel[] = [];
   temp: InspectionModel[] = [];
 
-  constructor(private inspectionService: InspectionService, private modalService: ModalService) { }
+  constructor(private inspectionService: InspectionService,
+    private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.inspectionService.get().subscribe((inspections: InspectionModel[]) => {
@@ -33,18 +34,18 @@ export class InspectionsComponent implements OnInit, OnDestroy {
     this.modalService.get(ModalType.EditInspection, inspection);
   }
 
-  remove() {
-    this.modalService.get(ModalType.EditInspection)
+  remove(id: number) {
+    this.inspectionService.remove(id).subscribe();
   }
 
   search(event) {
     const val = event.target.value.toLowerCase();
 
     const temp = this.temp.filter(function (insp: InspectionModel) {
-      return insp.Name.toLowerCase().indexOf(val) !== -1
-        || insp.Surname.toLowerCase().indexOf(val) !== -1
-        || insp.County.toLowerCase().indexOf(val) !== -1
-        || insp.Address.toLowerCase().indexOf(val) !== -1
+      return insp.name.toLowerCase().indexOf(val) !== -1
+        || insp.surname.toLowerCase().indexOf(val) !== -1
+        || insp.county.toLowerCase().indexOf(val) !== -1
+        || insp.address.toLowerCase().indexOf(val) !== -1
         || !val;
     });
 
