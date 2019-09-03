@@ -10,6 +10,7 @@ import { InspectionsComponent } from './pages/inspections/inspections.component'
 import { LoginComponent } from './pages/login/login.component';
 import { AddInspectionComponent } from './components/modals/add-inspection.component';
 import { EditInspectionComponent } from './components/modals/edit-inspection.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { EditInspectionComponent } from './components/modals/edit-inspection.com
     NgxDatatableModule,
     NgbModule,
     RouterModule.forRoot([
-      { path: '', component: InspectionsComponent, pathMatch: 'full' },
+      { canActivate: [AuthGuard], path: '', component: InspectionsComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
     ])
   ],

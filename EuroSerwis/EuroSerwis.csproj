@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -31,23 +31,27 @@
     <None Remove="ClientApp\src\app\components\modals\add-inspection.component.ts" />
     <None Remove="ClientApp\src\app\components\modals\edit-inspection.component.ts" />
     <None Remove="ClientApp\src\app\enums\modal-type.enum.ts" />
+    <None Remove="ClientApp\src\app\guards\auth.guard.ts" />
     <None Remove="ClientApp\src\app\pages\login\login.component.ts" />
     <None Remove="ClientApp\src\app\model\inspection.model.ts" />
     <None Remove="ClientApp\src\app\services\authentication.service.ts" />
     <None Remove="ClientApp\src\app\services\inspection.service.ts" />
     <None Remove="ClientApp\src\app\services\modal.service.ts" />
+    <None Remove="ClientApp\src\environments\resources.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\components\modals\add-inspection.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\modals\edit-inspection.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\enums\modal-type.enum.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\guards\auth.guard.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\inspections\inspections.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\login\login.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\inspection.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\authentication.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\inspection.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\modal.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\environments\resources.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

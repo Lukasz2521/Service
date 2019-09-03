@@ -22,24 +22,29 @@ namespace EuroSerwis.Controllers
             _inspection = inspection;
         }
 
-        [HttpPost("[action]")]
+        [HttpPost]
         public async Task<ActionResult> Add([FromBody]InspectionDTO inspection)
         {
             await _inspection.Add(inspection);
 
-            return StatusCode(200);
+            return Ok();
         }
 
 
-        [HttpGet("[action]")]
-        public async Task<IEnumerable<InspectionDTO>> Get()
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
             var inspections = await _inspection.Get();
 
-            return inspections;
+            if(inspections == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(inspections);
         }
 
-        [HttpPut("[action]")]
+        [HttpPut]
         public async Task<IActionResult> Update([FromBody]InspectionDTO inspection)
         {
             await _inspection.Update(inspection);
@@ -47,7 +52,7 @@ namespace EuroSerwis.Controllers
             return Ok();
         }
 
-        [HttpDelete("[action]/{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Remove(int id)
         {
             await _inspection.Remove(id);

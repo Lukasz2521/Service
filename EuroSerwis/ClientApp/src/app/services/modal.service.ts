@@ -29,3 +29,28 @@ export class ModalService {
     }
   }
 }
+
+
+interface ICar {
+  name: string,
+  year: number
+}
+
+class Car {
+  name: string;
+  year: number;
+
+  constructor(name: string, year: number) {
+    this.name = name;
+    this.year = year;
+  }
+}
+
+let cars: ICar[] = [
+  { name: 'Ford', year: 2001 },
+  new Car('Nissan', 2010),
+  new Car('Nissan', 2019)
+]
+
+
+
