@@ -4,6 +4,9 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import InspectionModel  from '../../model/inspection.model';
 import { InspectionService } from '../../services/inspection.service';
 import { NgbDateStruct  } from '@ng-bootstrap/ng-bootstrap';
+import { InspectionsState } from '../../state/inspections.reducers';
+import { Store } from '@ngrx/store';
+import { CreateInspection } from '../../state/inspections.actions';
 
 @Component({
   selector: 'add-inspection-component',
@@ -14,8 +17,10 @@ export class AddInspectionComponent implements OnInit {
   inspection: InspectionModel;
   get f() { return this.inspectionForm.controls; }
 
-  constructor(public activeModal: NgbActiveModal,
-    private inspectionService: InspectionService) { }
+  constructor(
+    public activeModal: NgbActiveModal,
+    private inspectionService: InspectionService,
+    private store: Store<InspectionsState>) { }
 
   ngOnInit() {
     this.inspectionForm = new FormGroup({
@@ -31,8 +36,10 @@ export class AddInspectionComponent implements OnInit {
   onSubmit() {
     if (this.inspectionForm.valid) {
       this.inspectionForm.value.date = this.getDate();
-      this.inspectionService.add(this.inspectionForm.value).subscribe();
+      this.store.dispatch(new CreateInspection(this.inspectionForm.value as InspectionModel));
+      //this.inspectionService.add(this.inspectionForm.value).subscribe();
       this.activeModal.close();
+
     }
   }
 

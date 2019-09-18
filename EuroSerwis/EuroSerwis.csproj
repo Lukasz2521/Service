@@ -32,11 +32,16 @@
     <None Remove="ClientApp\src\app\components\modals\edit-inspection.component.ts" />
     <None Remove="ClientApp\src\app\enums\modal-type.enum.ts" />
     <None Remove="ClientApp\src\app\guards\auth.guard.ts" />
+    <None Remove="ClientApp\src\app\index.ts" />
+    <None Remove="ClientApp\src\app\model\user.ts" />
     <None Remove="ClientApp\src\app\pages\login\login.component.ts" />
     <None Remove="ClientApp\src\app\model\inspection.model.ts" />
     <None Remove="ClientApp\src\app\services\authentication.service.ts" />
     <None Remove="ClientApp\src\app\services\inspection.service.ts" />
     <None Remove="ClientApp\src\app\services\modal.service.ts" />
+    <None Remove="ClientApp\src\app\state\inspections.actions.ts" />
+    <None Remove="ClientApp\src\app\state\inspections.effects.ts" />
+    <None Remove="ClientApp\src\app\state\inspections.reducers.ts" />
     <None Remove="ClientApp\src\environments\resources.ts" />
   </ItemGroup>
 
@@ -45,13 +50,22 @@
     <TypeScriptCompile Include="ClientApp\src\app\components\modals\edit-inspection.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\enums\modal-type.enum.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\guards\auth.guard.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\user.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\inspections\inspections.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\login\login.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\inspection.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\authentication.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\inspection.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\modal.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\state\inspections.actions.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\state\inspections.effects.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\state\inspections.reducers.ts" />
     <TypeScriptCompile Include="ClientApp\src\environments\resources.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\components\forms\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

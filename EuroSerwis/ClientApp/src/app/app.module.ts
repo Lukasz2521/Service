@@ -11,6 +11,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { AddInspectionComponent } from './components/modals/add-inspection.component';
 import { EditInspectionComponent } from './components/modals/edit-inspection.component';
 import { AuthGuard } from './guards/auth.guard';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './index';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { InspectionsEffects } from './state/inspections.effects';
 
 @NgModule({
   declarations: [
@@ -27,10 +33,15 @@ import { AuthGuard } from './guards/auth.guard';
     ReactiveFormsModule,
     NgxDatatableModule,
     NgbModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([
+      InspectionsEffects
+    ]),
     RouterModule.forRoot([
       { canActivate: [AuthGuard], path: '', component: InspectionsComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
-    ])
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -12,7 +12,7 @@ export class InspectionService {
 
   constructor(private http: HttpClient) { }
 
-  public get(): Observable<InspectionModel[]> {
+  public get() {
     return this.http.get<InspectionModel[]>(`${environment.host + resource.inspection}`);
   }
 
