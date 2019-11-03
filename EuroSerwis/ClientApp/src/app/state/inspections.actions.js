@@ -27,7 +27,8 @@ var InspectionsLoaded = /** @class */ (function () {
 }());
 exports.InspectionsLoaded = InspectionsLoaded;
 var CreateInspection = /** @class */ (function () {
-    function CreateInspection() {
+    function CreateInspection(payload) {
+        this.payload = payload;
         this.type = InspectionActionTypes.CreateInspection;
     }
     return CreateInspection;
@@ -52,7 +53,7 @@ exports.DeleteInspection = DeleteInspection;
 var InspectionDeleted = /** @class */ (function () {
     function InspectionDeleted(payload) {
         this.payload = payload;
-        this.type = InspectionActionTypes.DeleteInspection;
+        this.type = InspectionActionTypes.InspectionDeleted;
     }
     return InspectionDeleted;
 }());

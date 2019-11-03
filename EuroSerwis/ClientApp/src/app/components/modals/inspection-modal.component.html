@@ -2,7 +2,7 @@
   <div class="modal-header">
     <h4 class="modal-title"
         id="modal-basic-title">
-      Dodaj przegląd
+      {{ title }}
     </h4>
     <button type="button"
             class="close" 
@@ -17,8 +17,10 @@
           novalidate>
       <div class="form-group">
         <label>Imię</label>
+        <input formControlName="id"
+               type="hidden"
+               name="id"/>
         <input formControlName="name"
-               [(ngModel)]="inspection.name"
                name="name"
                type="text"
                placeholder="Imię"
@@ -31,7 +33,6 @@
       <div class="form-group">
         <label>Nazwisko</label>
         <input formControlName="surname"
-               [(ngModel)]="inspection.surname"
                name="Surname"
                type="text"
                placeholder="Nazwisko"
@@ -44,7 +45,6 @@
       <div class="form-group">
         <label>Adres</label>
         <input formControlName="address"
-               [(ngModel)]="inspection.address"
                name="address"
                type="text"
                placeholder="Adres"
@@ -57,7 +57,6 @@
       <div class="form-group">
         <label>Powiat</label>
         <input formControlName="county"
-               [(ngModel)]="inspection.county"
                type="text"
                name="county"
                placeholder="Powiat"
@@ -71,7 +70,6 @@
         <label for="dateOfBirth">Data przeglądu</label>
         <div class="input-group">
           <input formControlName="date"
-                 [(ngModel)]="inspection.date"
                  id="dateOfBirth"
                  class="form-control"
                  placeholder="dd-mm-yyyy"
@@ -93,7 +91,6 @@
       <div class="form-group">
         <label>Telefon</label>
         <input formControlName="phone"
-               [(ngModel)]="inspection.phone"
                name="phone"
                type="text"
                placeholder="Telefon"

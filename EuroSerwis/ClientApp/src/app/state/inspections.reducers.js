@@ -14,7 +14,7 @@ function inspectionsReducer(state, action) {
         case inspections_actions_1.InspectionActionTypes.InspectionCreated:
             return exports.adapter.addOne(action.payload, state);
         case inspections_actions_1.InspectionActionTypes.InspectionUpdated:
-            return exports.adapter.updateOne(action.payload, state);
+            return exports.adapter.updateOne({ id: action.payload.id, changes: action.payload }, state);
         case inspections_actions_1.InspectionActionTypes.InspectionDeleted:
             return exports.adapter.removeOne(action.payload, state);
         default:

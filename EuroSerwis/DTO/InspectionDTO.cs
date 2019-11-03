@@ -8,7 +8,6 @@ namespace EuroSerwis.DTO
 {
     public class InspectionDTO
     {
-        [Required]
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }

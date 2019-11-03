@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType, Effect } from '@ngrx/effects';
-import { map, mergeMap, catchError, exhaustMap } from 'rxjs/operators';
+import { Actions, ofType, Effect } from '@ngrx/effects';
+import { map, mergeMap, catchError } from 'rxjs/operators';
 import { InspectionService } from '../services/inspection.service';
 import {
   LoadInspections, InspectionActionTypes,
@@ -26,9 +26,9 @@ export class InspectionsEffects {
   @Effect()
   createInspection$ = this.actions$.pipe(
     ofType(InspectionActionTypes.CreateInspection),
-    mergeMap((inspection: InspectionModel) => this.inspectionsService.add(inspection)
+    mergeMap(({ payload }) => this.inspectionsService.add(payload)
       .pipe(
-        map((inspection: InspectionModel) => new InspectionCreated(inspection)),
+        map(() => new LoadInspections()),
         catchError(() => EMPTY)
       )
     )
@@ -37,20 +37,20 @@ export class InspectionsEffects {
   @Effect()
   deleteInspection$ = this.actions$.pipe(
     ofType(InspectionActionTypes.DeleteInspection),
-    mergeMap((inspectionId: number) => this.inspectionsService.remove(inspectionId)
+    mergeMap(({ payload }) => this.inspectionsService.remove(payload)
       .pipe(
-        map((inspection: InspectionModel) => new InspectionDeleted(inspection)),
+        map(() => new InspectionDeleted(payload)),
         catchError(() => EMPTY)
       )
     )
   );
 
   @Effect()
-  editInspection = this.actions$.pipe(
+  updateInspection$ = this.actions$.pipe(
     ofType(InspectionActionTypes.UpdateInspection),
-    mergeMap((inspection: InspectionModel) => this.inspectionsService.update(inspection)
+    mergeMap(({ payload }) => this.inspectionsService.update(payload)
       .pipe(
-        map((inspection: InspectionModel) => new InspectionUpdated(inspection)),
+        map(() => new InspectionUpdated(payload)),
         catchError(() => EMPTY)
       )
     )

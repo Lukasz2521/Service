@@ -24,6 +24,8 @@ export class InspectionsLoaded implements Action {
 
 export class CreateInspection implements Action {
   readonly type = InspectionActionTypes.CreateInspection;
+
+  constructor(public payload: InspectionModel) { }
 }
 
 export class InspectionCreated implements Action {
@@ -39,21 +41,22 @@ export class DeleteInspection implements Action {
 }
 
 export class InspectionDeleted implements Action {
-  readonly type = InspectionActionTypes.DeleteInspection;
+  readonly type = InspectionActionTypes.InspectionDeleted;
 
-  constructor(private payload: InspectionModel) { }
+  constructor(private payload: number) { }
 }
 
 export class UpdateInspection implements Action {
   readonly type = InspectionActionTypes.UpdateInspection;
 
-  constructor(private payload: InspectionModel) { }
+  constructor(public payload: InspectionModel) { }
 }
 
 export class InspectionUpdated implements Action {
   readonly type = InspectionActionTypes.InspectionUpdated;
 
-  constructor(private payload: InspectionModel) { }
+  constructor(public payload: InspectionModel) { }
 }
 
-export type InspectionsActions = LoadInspections | CreateInspection | DeleteInspection | UpdateInspection;
+export type InspectionsActions = LoadInspections |
+  CreateInspection | DeleteInspection | UpdateInspection | InspectionUpdated;

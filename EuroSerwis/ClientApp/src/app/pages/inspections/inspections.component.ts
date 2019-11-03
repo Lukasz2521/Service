@@ -4,11 +4,10 @@ import  InspectionModel from '../../model/inspection.model';
 import { ModalService } from '../../services/modal.service';
 import { ModalType } from '../../enums/modal-type.enum';
 import { Store, select } from '@ngrx/store';
-import { InspectionsState, inspections } from '../../state/inspections.reducers';
+import { InspectionsState } from '../../state/inspections.reducers';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { dispatch } from 'rxjs/internal/observable/pairs';
-import { LoadInspections } from '../../state/inspections.actions';
+import { map, filter, switchMap } from 'rxjs/operators';
+import { LoadInspections, DeleteInspection } from '../../state/inspections.actions';
 import { selectAllInspections } from '../..';
 
 
@@ -18,6 +17,7 @@ import { selectAllInspections } from '../..';
 })
 export class InspectionsComponent implements OnInit {
   inspections$: Observable<InspectionModel[]>;
+  tempInspections$: Observable<InspectionModel[]>;
 
   constructor(
     private inspectionService: InspectionService,
@@ -34,7 +34,7 @@ export class InspectionsComponent implements OnInit {
   }
 
   getInspections() {
-    this.store.dispatch(new LoadInspections())
+    this.store.dispatch(new LoadInspections());
   }
 
   add() {
@@ -46,20 +46,23 @@ export class InspectionsComponent implements OnInit {
   }
 
   remove(id: number) {
-    this.inspectionService.remove(id).subscribe();
+    this.store.dispatch(new DeleteInspection(id));
   }
 
   search(event) {
-    //const val = event.target.value.toLowerCase();
+    const val = event.target.value.toLowerCase();
 
-    //const temp = this.temp.filter(function (insp: InspectionModel) {
-    //  return insp.name.toLowerCase().indexOf(val) !== -1
-    //    || insp.surname.toLowerCase().indexOf(val) !== -1
-    //    || insp.county.toLowerCase().indexOf(val) !== -1
-    //    || insp.address.toLowerCase().indexOf(val) !== -1
-    //    || !val;
-    //});
+    const tempInspections$ = this.inspections$.pipe<InspectionModel[]>(
+      map((inspections: InspectionModel[]) =>
+        inspections.filter((insp: InspectionModel) =>
+          insp.name.toLowerCase().indexOf(val) !== -1
+          || insp.surname.toLowerCase().indexOf(val) !== -1
+          || insp.county.toLowerCase().indexOf(val) !== -1
+          || insp.address.toLowerCase().indexOf(val) !== -1
+          || !val
+        ))
+    );
 
-    //this.rows = temp;
+    this.inspections$ = tempInspections$;
   }
 }

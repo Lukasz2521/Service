@@ -20,7 +20,7 @@ export function inspectionsReducer(state = initialState, action): InspectionsSta
     case InspectionActionTypes.InspectionCreated:
       return adapter.addOne(action.payload, state);
     case InspectionActionTypes.InspectionUpdated:
-      return adapter.updateOne(action.payload, state);
+      return adapter.updateOne({ id: action.payload.id, changes: action.payload }, state);
     case InspectionActionTypes.InspectionDeleted:
       return adapter.removeOne(action.payload, state);
     default:

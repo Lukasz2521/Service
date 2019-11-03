@@ -1,23 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Component } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { InspectionService } from '../../services/inspection.service';
-import InspectionModel from '../../model/inspection.model';
+import { InspectionsState } from '../../state/inspections.reducers';
+import { Store } from '@ngrx/store';
+import { UpdateInspection } from '../../state/inspections.actions';
 
 @Component({
   selector: 'edit-inspection-component',
   templateUrl: './inspection-modal.component.html'
 })
-export class EditInspectionComponent implements OnInit {
+export class EditInspectionComponent {
+  title: string = 'Edytuj przegląd';
   inspectionForm: FormGroup;
-  inspection: InspectionModel;
   get f() { return this.inspectionForm.controls; }
 
-  constructor(public activeModal: NgbActiveModal,
-    private inspectionService: InspectionService) { }
+  constructor(public activeModal: NgbActiveModal, private store: Store<InspectionsState>) {
+    this.createForm();
+  }
 
-  ngOnInit() {
+  onSubmit() {
+    if (this.inspectionForm.valid) {
+      this.store.dispatch(new UpdateInspection(this.inspectionForm.value));
+      this.close();
+    }
+  }
+
+  private createForm() {
     this.inspectionForm = new FormGroup({
+      id: new FormControl(),
       name: new FormControl('', Validators.required),
       surname: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
@@ -27,20 +37,8 @@ export class EditInspectionComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    if (this.inspectionForm.valid) {
-      this.inspection.date = this.getDate();
-      this.inspectionService.update(this.inspection).subscribe();
-      this.activeModal.close();
-    }
-  }
-
-  getDate() {
-    const date = this.inspectionForm.value.date as NgbDateStruct;
-    return new Date(date.year, date.month - 1, date.day).toJSON();
-  }
-
   close() {
+    this.inspectionForm.reset();
     this.activeModal.close();
   }
 }

@@ -45,6 +45,7 @@ namespace EuroSerwis.Repositories
 
         public async Task Remove(int id)
         {
+
             var inspection = _context.Inspections.Single(i => i.Id == id);
             _context.Inspections.Remove(inspection);
             await _context.SaveChangesAsync();

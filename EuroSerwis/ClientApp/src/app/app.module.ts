@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { InspectionsComponent } from './pages/inspections/inspections.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AddInspectionComponent } from './components/modals/add-inspection.component';
@@ -39,11 +39,14 @@ import { InspectionsEffects } from './state/inspections.effects';
       InspectionsEffects
     ]),
     RouterModule.forRoot([
-      { canActivate: [AuthGuard], path: '', component: InspectionsComponent, pathMatch: 'full' },
+      { /*canActivate: [AuthGuard],*/ path: '', component: InspectionsComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
     ]),
   ],
-  providers: [],
+  providers: [{
+    provide: NgbDateAdapter,
+    useClass: NgbDateNativeAdapter
+  }],
   bootstrap: [AppComponent],
   entryComponents: [
     AddInspectionComponent,
