@@ -13,7 +13,8 @@ import { selectAllInspections } from '../..';
 
 @Component({
   selector: 'inspections',
-  templateUrl: './inspections.component.html'
+  templateUrl: './inspections.component.html',
+  styleUrls: ['./inspections.component.css']
 })
 export class InspectionsComponent implements OnInit {
   inspections$: Observable<InspectionModel[]>;
@@ -27,6 +28,7 @@ export class InspectionsComponent implements OnInit {
     this.inspections$ = store.pipe(
       select(selectAllInspections)
     );
+    this.tempInspections$ = this.inspections$;
   }
 
   ngOnInit(): void {
@@ -52,7 +54,7 @@ export class InspectionsComponent implements OnInit {
   search(event) {
     const val = event.target.value.toLowerCase();
 
-    const tempInspections$ = this.inspections$.pipe<InspectionModel[]>(
+    const tempInspections$ = this.tempInspections$.pipe<InspectionModel[]>(
       map((inspections: InspectionModel[]) =>
         inspections.filter((insp: InspectionModel) =>
           insp.name.toLowerCase().indexOf(val) !== -1

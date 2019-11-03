@@ -13,7 +13,6 @@ export class AddInspectionComponent {
   title: string = 'Dodaj przegląd';
   inspectionForm: FormGroup;
   get f() { return this.inspectionForm.controls; }
-
   constructor(
     public activeModal: NgbActiveModal,
     private store: Store<InspectionsState>) {
