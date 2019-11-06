@@ -1,11 +1,14 @@
-import { Component, TemplateRef } from '@angular/core';
+import {
+  Component,
+  OnInit, ViewChild, ComponentFactoryResolver, ViewContainerRef
+} from '@angular/core';
 import { ToastService } from './../../toast.service';
-
+import { ToastComponent } from '../toast/toast.component';
+import Toast from '../model/toast';
 
 @Component({
   selector: 'toasts',
   templateUrl: './toasts-container.component.html',
-  host: { '[class.ngb-toasts]': 'true' },
   styles: [`.toasts-container {
     position: fixed;
     top: 50px;
@@ -13,8 +16,18 @@ import { ToastService } from './../../toast.service';
     z-index: 1200;
   }`]
 })
-export class ToastsContainerComponent {
-  constructor(public toastService: ToastService) { }
+export class ToastsContainerComponent implements OnInit {
+  constructor(public toastService: ToastService,
+    private componentFactoryResolver: ComponentFactoryResolver) { }
 
-  isTemplate(toast) { return toast.textOrTpl instanceof TemplateRef; }
+  @ViewChild('toastContainer', { read: ViewContainerRef })
+  toastContainer: ViewContainerRef;
+
+  ngOnInit() {
+    this.toastService.toast.subscribe((toast: Toast) => {
+      const factory = this.componentFactoryResolver.resolveComponentFactory(ToastComponent);
+      const toastRef = this.toastContainer.createComponent(factory);
+      toastRef.instance.toast = toast;
+    });
+  }
 }

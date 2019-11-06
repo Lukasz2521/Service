@@ -1,5 +1,5 @@
-import { Component, TemplateRef, Input } from '@angular/core';
-import { ToastService } from './../toast.service';
+import { Component, OnInit } from '@angular/core';
+import Toast from '../model/toast';
 
 
 @Component({
@@ -7,17 +7,17 @@ import { ToastService } from './../toast.service';
   templateUrl: './toast.component.html',
   host: { '[class.ngb-toasts]': 'true' }
 })
-export class ToastComponent {
-  @Input('class')
-  class: string;
+export class ToastComponent implements OnInit {
+  toast: Toast;
 
-  @Input('header')
-  header: string;
+  constructor() { }
 
-  @Input('delay')
-  delay: string;
+  ngOnInit() {
+    
+  }
 
-  constructor(public toastService: ToastService) { }
-
-  isTemplate(toast) { return toast.textOrTpl instanceof TemplateRef; }
+  hideToast(): void {
+    //setTimeout(() => {
+    //}, this.toast.delay);
+  }
 }

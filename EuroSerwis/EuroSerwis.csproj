@@ -42,6 +42,7 @@
     <None Remove="ClientApp\src\app\state\inspections.actions.ts" />
     <None Remove="ClientApp\src\app\state\inspections.effects.ts" />
     <None Remove="ClientApp\src\app\state\inspections.reducers.ts" />
+    <None Remove="ClientApp\src\app\toast\components\model\toast.ts" />
     <None Remove="ClientApp\src\app\toast\toast.component.ts" />
     <None Remove="ClientApp\src\app\toast\toast.module.ts" />
     <None Remove="ClientApp\src\app\toast\toast.service.ts" />
@@ -65,6 +66,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\state\inspections.actions.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\state\inspections.effects.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\state\inspections.reducers.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\toast\components\model\toast.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\toast\components\toast\toast.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\toast\toast.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\toast\toast.service.ts" />
