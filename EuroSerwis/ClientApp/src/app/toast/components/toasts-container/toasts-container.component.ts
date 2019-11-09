@@ -11,8 +11,8 @@ import Toast from '../model/toast';
   templateUrl: './toasts-container.component.html',
   styles: [`.toasts-container {
     position: fixed;
-    top: 50px;
-    right: 50px;
+    top: 30px;
+    right: 30px;
     z-index: 1200;
   }`]
 })
@@ -21,13 +21,14 @@ export class ToastsContainerComponent implements OnInit {
     private componentFactoryResolver: ComponentFactoryResolver) { }
 
   @ViewChild('toastContainer', { read: ViewContainerRef })
-  toastContainer: ViewContainerRef;
+  toastContainer: ViewContainerRef; 
 
   ngOnInit() {
     this.toastService.toast.subscribe((toast: Toast) => {
       const factory = this.componentFactoryResolver.resolveComponentFactory(ToastComponent);
       const toastRef = this.toastContainer.createComponent(factory);
       toastRef.instance.toast = toast;
+      toastRef.instance.selfRef = toastRef.hostView;
     });
   }
 }

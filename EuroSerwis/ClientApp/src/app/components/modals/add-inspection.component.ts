@@ -4,6 +4,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { InspectionsState } from '../../state/inspections.reducers';
 import { Store } from '@ngrx/store';
 import { CreateInspection } from '../../state/inspections.actions';
+import { ToastService } from '../../toast/toast.service';
 
 @Component({
   selector: 'add-inspection-component',
@@ -13,9 +14,11 @@ export class AddInspectionComponent {
   title: string = 'Dodaj przegląd';
   inspectionForm: FormGroup;
   get f() { return this.inspectionForm.controls; }
+
   constructor(
     public activeModal: NgbActiveModal,
-    private store: Store<InspectionsState>) {
+    private store: Store<InspectionsState>,
+    private toastService: ToastService) {
     this.createForm();
   }
 
@@ -23,6 +26,7 @@ export class AddInspectionComponent {
     if (this.inspectionForm.valid) {
       this.store.dispatch(new CreateInspection(this.inspectionForm.value));
       this.close();
+      this.toastService.show({ text: 'Przegląd dodany', delay: 5000, class: 'bg-success' });
     }
   }
 

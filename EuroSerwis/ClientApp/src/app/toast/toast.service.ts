@@ -4,7 +4,8 @@ import Toast from './components/model/toast';
 
 @Injectable({ providedIn: 'root' })
 export class ToastService {
-  private _toast: Subject<Toast> = new Subject<Toast>(); // replace any with model 
+
+  private _toast: Subject<Toast> = new Subject<Toast>();
   public readonly toast: Observable<Toast> = this._toast.asObservable();
 
   show(toast: Toast) {

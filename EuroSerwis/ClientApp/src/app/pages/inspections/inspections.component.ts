@@ -51,7 +51,7 @@ export class InspectionsComponent implements OnInit {
 
   remove(id: number) {
     this.store.dispatch(new DeleteInspection(id));
-    this.toastService.show({ text: 'Przegląd usunięty', delay: 500, class: '' });
+    this.toastService.show({ text: 'Przegląd usunięty', delay: 5000, class: 'bg-danger' });
   }
 
   search(event) {
