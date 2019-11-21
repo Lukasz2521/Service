@@ -19,9 +19,11 @@ namespace EuroSerwis.Services
             _inspectionRepository = inspectionRepository;
             _mapper = mapper;
         }
-        public async Task<IEnumerable<InspectionDTO>> Get()
+        public async Task<IEnumerable<InspectionDTO>> Get(bool getUpcoming)
         {
-            var inspections = await _inspectionRepository.Get();
+            var inspections = getUpcoming ?
+                await _inspectionRepository.GetUpcoming() :
+                await _inspectionRepository.Get();
 
             return _mapper.Map<IEnumerable<Inspection>, IEnumerable<InspectionDTO>>(inspections);
         }

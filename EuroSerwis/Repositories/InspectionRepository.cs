@@ -29,6 +29,15 @@ namespace EuroSerwis.Repositories
             return inspections;
         }
 
+        public async Task<IEnumerable<Inspection>> GetUpcoming()
+        {
+            var inspections = await _context.Inspections.Where(inspection => 
+                Math.Round((inspection.Date - DateTime.Now).TotalDays) < 7
+            ).ToListAsync();
+
+            return inspections;
+        }
+
         public async Task Update(Inspection inspection)
         {
             try

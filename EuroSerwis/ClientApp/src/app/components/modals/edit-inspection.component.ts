@@ -4,7 +4,6 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { InspectionsState } from '../../state/inspections.reducers';
 import { Store } from '@ngrx/store';
 import { UpdateInspection } from '../../state/inspections.actions';
-import { ToastService } from '../../toast/toast.service';
 
 @Component({
   selector: 'edit-inspection-component',
@@ -16,8 +15,7 @@ export class EditInspectionComponent {
   get f() { return this.inspectionForm.controls; }
 
   constructor(public activeModal: NgbActiveModal,
-    private store: Store<InspectionsState>,
-    private toastService: ToastService) {
+    private store: Store<InspectionsState>) {
     this.createForm();
   }
 
@@ -25,7 +23,6 @@ export class EditInspectionComponent {
     if (this.inspectionForm.valid) {
       this.store.dispatch(new UpdateInspection(this.inspectionForm.value));
       this.close();
-      this.toastService.show({ text: 'Przegląd zmieniony', delay: 5000, class: 'bg-success' });
     }
   }
 
@@ -37,7 +34,7 @@ export class EditInspectionComponent {
       address: new FormControl('', Validators.required),
       county: new FormControl('', Validators.required),
       date: new FormControl('', Validators.required),
-      phone: new FormControl('', Validators.required)
+      phone: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+')])
     });
   }
 

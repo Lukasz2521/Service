@@ -16,6 +16,10 @@ export class InspectionService {
     return this.http.get<InspectionModel[]>(`${environment.host + resource.inspection}`);
   }
 
+  public getUpcoming() {
+    return this.http.get<InspectionModel[]>(`${environment.host + resource.upcomingInspection}`);
+  }
+
   public add(inspection: InspectionModel) {
     return this.http.post(`${environment.host + resource.inspection}`, inspection);
   }

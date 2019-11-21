@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
 import { LoadInspections, DeleteInspection } from '../../state/inspections.actions';
 import { selectAllInspections } from '../..';
-import { ToastService } from '../../toast/toast.service';
 
 
 @Component({
@@ -20,12 +19,11 @@ import { ToastService } from '../../toast/toast.service';
 export class InspectionsComponent implements OnInit {
   inspections$: Observable<InspectionModel[]>;
   tempInspections$: Observable<InspectionModel[]>;
-
+  
   constructor(
     private inspectionService: InspectionService,
     private modalService: ModalService,
-    private store: Store<InspectionsState>,
-    private toastService: ToastService
+    private store: Store<InspectionsState>
   ) {
     this.inspections$ = store.pipe(
       select(selectAllInspections)
@@ -51,7 +49,6 @@ export class InspectionsComponent implements OnInit {
 
   remove(id: number) {
     this.store.dispatch(new DeleteInspection(id));
-    this.toastService.show({ text: 'Przegląd usunięty', delay: 5000, class: 'bg-danger' });
   }
 
   search(event) {

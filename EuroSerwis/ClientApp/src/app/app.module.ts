@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -18,6 +18,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { InspectionsEffects } from './state/inspections.effects';
 import { ToastModule } from './toast/toast.module';
+import { NotificationInterceptor } from './interceptors/notification.interceptor';
 
 @NgModule({
   declarations: [
@@ -41,14 +42,21 @@ import { ToastModule } from './toast/toast.module';
       InspectionsEffects
     ]),
     RouterModule.forRoot([
-      { /*canActivate: [AuthGuard],*/ path: '', component: InspectionsComponent, pathMatch: 'full' },
+      { /*canActivate: [AuthGuard], */ path: '', component: InspectionsComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
     ]),
   ],
-  providers: [{
-    provide: NgbDateAdapter,
-    useClass: NgbDateNativeAdapter
-  }],
+  providers: [
+    {
+      provide: NgbDateAdapter,
+      useClass: NgbDateNativeAdapter
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NotificationInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     AddInspectionComponent,

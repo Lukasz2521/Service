@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ModalType } from '../enums/modal-type.enum';
-import { NgbModal NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import InspectionModel from '../model/inspection.model';
 import { AddInspectionComponent } from '../components/modals/add-inspection.component';
 import { EditInspectionComponent } from '../components/modals/edit-inspection.component';
@@ -22,15 +22,8 @@ export class ModalService {
       }
       case ModalType.EditInspection: {
         modal = this.modalService.open(EditInspectionComponent);
-        (modal.componentInstance as EditInspectionComponent).inspectionForm.setValue({
-          id: model.id,
-          name: model.name,
-          surname: model.surname,
-          address: model.address,
-          county: model.county,
-          date: model.date,
-          phone: model.phone
-        });
+        model.date = new Date(model.date as string); 
+        (modal.componentInstance as EditInspectionComponent).inspectionForm.setValue({ ...model });
         break;
       }
     }

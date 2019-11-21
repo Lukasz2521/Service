@@ -10,7 +10,7 @@ namespace EuroSerwis.Services
     public interface IInspection
     {
         Task Add(InspectionDTO inspection);
-        Task<IEnumerable<InspectionDTO>> Get();
+        Task<IEnumerable<InspectionDTO>> Get(bool getUpcoming);
         Task Remove(int id);
         Task Update(InspectionDTO inspection);
     }

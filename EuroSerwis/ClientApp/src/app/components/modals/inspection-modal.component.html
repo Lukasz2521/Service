@@ -73,15 +73,17 @@
                  id="dateOfBirth"
                  class="form-control"
                  placeholder="dd-mm-yyyy"
+                 readonly
                  name="date"
                  ngbDatepicker
                  #dp="ngbDatepicker"
                  [ngClass]="{ 'form-error': f.date.invalid && f.date.touched }">
           <div class="input-group-append">
-            <a class="btn btn-outline-secondary calendar"
+            <button class="btn btn-outline-secondary calendar"
+               type="button"
                (click)="dp.toggle()"
                [ngClass]="{ 'form-error': f.date.invalid && f.date.touched }">
-            </a>
+            </button>
           </div>
         </div>
         <div *ngIf="f.date.invalid && f.date.touched" class="alert alert-danger">
@@ -96,8 +98,11 @@
                placeholder="Telefon"
                class="form-control"
                [ngClass]="{ 'form-error': f.phone.invalid && f.phone.touched }" />
-        <div *ngIf="f.phone.invalid && f.phone.touched" class="alert alert-danger">
+        <div *ngIf="f.phone.errors?.required && f.phone.touched" class=" ">
           Telefon jest wymagany
+        </div>
+        <div *ngIf="f.phone.errors?.pattern && f.phone.touched" class="alert alert-danger">
+          Telefon powinien zawierać tylko cyfry
         </div>
       </div>
       <button type="submit"

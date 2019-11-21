@@ -6,6 +6,7 @@ using AutoMapper;
 using EuroSerwis.DTO;
 using EuroSerwis.Model;
 using EuroSerwis.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,7 +35,7 @@ namespace EuroSerwis.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var inspections = await _inspection.Get();
+            var inspections = await _inspection.Get(false);
 
             if(inspections == null)
             {
@@ -43,6 +44,20 @@ namespace EuroSerwis.Controllers
 
             return Ok(inspections);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUpcoming()
+        {
+            var inspections = await _inspection.Get(true);
+
+            if (inspections == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(inspections);
+        }
+
 
         [HttpPut]
         public async Task<IActionResult> Update([FromBody]InspectionDTO inspection)
