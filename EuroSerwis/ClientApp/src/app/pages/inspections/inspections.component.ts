@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
 import { LoadInspections, DeleteInspection } from '../../state/inspections.actions';
 import { selectAllInspections } from '../..';
-
+import { ColumnMode, SortType } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'inspections',
@@ -19,7 +19,9 @@ import { selectAllInspections } from '../..';
 export class InspectionsComponent implements OnInit {
   inspections$: Observable<InspectionModel[]>;
   tempInspections$: Observable<InspectionModel[]>;
-  
+  ColumnMode = ColumnMode;
+  SortType = SortType;
+
   constructor(
     private inspectionService: InspectionService,
     private modalService: ModalService,

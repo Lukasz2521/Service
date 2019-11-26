@@ -33,6 +33,7 @@ namespace EuroSerwis.Controllers
 
 
         [HttpGet]
+        [Route("/upcoming")]
         public async Task<IActionResult> Get()
         {
             var inspections = await _inspection.Get(false);

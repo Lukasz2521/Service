@@ -35,8 +35,12 @@
     <None Remove="ClientApp\src\app\index.ts" />
     <None Remove="ClientApp\src\app\interceptors\notification.interceptor.ts" />
     <None Remove="ClientApp\src\app\model\user.ts" />
+    <None Remove="ClientApp\src\app\pages\inspections\inspection-routing.module.ts" />
+    <None Remove="ClientApp\src\app\pages\inspections\inspection.module.ts" />
     <None Remove="ClientApp\src\app\pages\login\login.component.ts" />
     <None Remove="ClientApp\src\app\model\inspection.model.ts" />
+    <None Remove="ClientApp\src\app\resolvers\all-inspections.resolver.ts" />
+    <None Remove="ClientApp\src\app\resolvers\upcoming-inspections.resolver.ts" />
     <None Remove="ClientApp\src\app\services\authentication.service.ts" />
     <None Remove="ClientApp\src\app\services\inspection.service.ts" />
     <None Remove="ClientApp\src\app\services\modal.service.ts" />
@@ -59,9 +63,13 @@
     <TypeScriptCompile Include="ClientApp\src\app\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interceptors\notification.interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\user.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\inspections\inspection-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\inspections\inspection.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\inspections\inspections.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\login\login.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\inspection.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\resolvers\all-inspections.resolver.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\resolvers\upcoming-inspections.resolver.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\authentication.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\inspection.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\modal.service.ts" />
@@ -78,6 +86,8 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\components\forms\" />
+    <Folder Include="ClientApp\src\app\pages\inspections\all\" />
+    <Folder Include="ClientApp\src\app\pages\inspections\upcoming\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
