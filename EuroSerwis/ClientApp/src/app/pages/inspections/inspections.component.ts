@@ -52,7 +52,7 @@ export class InspectionsComponent implements OnInit {
   remove(id: number) {
     this.store.dispatch(new DeleteInspection(id));
   }
-
+  
   search(event) {
     const val = event.target.value.toLowerCase();
 

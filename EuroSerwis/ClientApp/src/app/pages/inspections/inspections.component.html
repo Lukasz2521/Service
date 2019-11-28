@@ -61,8 +61,8 @@
       <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
         <img src="./assets/settings.svg" width="30" height="30" [ngbPopover]="actionMenu" placement="left" />
         <ng-template #actionMenu>
-          <button (click)="edit(row)" class="btn btn-primary ">edytuj</button>
-          <button class="btn btn-danger" (click)="remove(row.id)">usuń</button>
+          <button class="btn btn-primary d-block w-100" (click)="edit(row)">edytuj</button>
+          <button class="btn btn-danger d-block w-100" (click)="remove(row.id)">usuń</button>
         </ng-template>
       </ng-template>
     </ngx-datatable-column>
