@@ -2,3 +2,16 @@
 .ngx-datatable {
   margin-top: 30px;
 }
+
+.ngx-datatable {
+  overflow: unset;
+}
+
+.action-btn {
+  width: 30px;
+  height: 30px;
+}
+
+.action-btn:hover {
+  cursor: pointer;
+}

@@ -21,6 +21,9 @@ export class InspectionsComponent implements OnInit {
   tempInspections$: Observable<InspectionModel[]>;
   ColumnMode = ColumnMode;
   SortType = SortType;
+  get isUpcoming() {
+    return true;
+  }
 
   constructor(
     private inspectionService: InspectionService,

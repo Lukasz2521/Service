@@ -59,10 +59,16 @@
     </ngx-datatable-column>
     <ngx-datatable-column minWidth="80" name="Akcja">
       <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-        <img src="./assets/settings.svg" width="30" height="30" [ngbPopover]="actionMenu" placement="left" />
+        <img src="./assets/settings.svg"
+             class="action-btn"
+             [ngbPopover]="actionMenu"
+             placement="left" />
         <ng-template #actionMenu>
-          <button class="btn btn-primary d-block w-100" (click)="edit(row)">edytuj</button>
-          <button class="btn btn-danger d-block w-100" (click)="remove(row.id)">usuń</button>
+          <button class="btn btn-primary d-block w-100 mb-2"
+                  (click)="edit(row)">edytuj</button>
+          <button class="btn btn-danger d-block w-100 mb-2"
+                  (click)="remove(row.id)">usuń</button>
+          <button class="btn btn-success d-block w-100">zatwierdź</button>
         </ng-template>
       </ng-template>
     </ngx-datatable-column>
