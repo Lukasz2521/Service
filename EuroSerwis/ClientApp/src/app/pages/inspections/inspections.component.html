@@ -1,11 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="./assets/inspection.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    <img src="./assets/inspection.svg"
+         width="30"
+         height="30"
+         class="d-inline-block align-top"
+         alt="application-logo">
     EuroSerwis - Przeglądy
   </a>
   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
     <li class="nav-item active">
-      <a class="nav-link" href="#">Wszystkie<span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="#">
+        Wszystkie
+        <span class="sr-only">(current)</span>
+      </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Nadchodzące</a>
@@ -13,66 +20,5 @@
   </ul>
   <button class="btn btn-outline-danger right">Wyloguj</button>
 </nav>
-
-<div class="container inspection-container">
-  <div class="row">
-    <div class="col-md-6">
-      <input (keyup)='search($event)'
-             type="text"
-             class="form-control"
-             name="name"
-             placeholder="Szukaj przeglądu" />
-    </div>
-    <div class="col-md-6">
-      <button class="btn btn-primary" (click)="add()">Dodaj przegląd</button>
-    </div>
-  </div>
-  <ngx-datatable class="bootstrap"
-                [rows]="inspections$ | async"
-                [columnMode]="ColumnMode.force"
-                [headerHeight]="50"
-                [rowHeight]="60">
-    <ngx-datatable-column name="Imię" minWidth="80" prop="name">
-      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-        {{ row.name }}
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Nazwisko" minWidth="80" prop="surname">
-      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-        {{ row.surname }} 
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Adres" minWidth="80" prop="address">
-      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-        {{ row.address }}
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Data przeglądu" minWidth="80" prop="date">
-      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-        {{ row.date | date:'yyyy-MM-dd' }}
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Numer telefonu" minWidth="80">
-      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-        {{ row.phone }}
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column minWidth="80" name="Akcja">
-      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-        <img src="./assets/settings.svg"
-             class="action-btn"
-             [ngbPopover]="actionMenu"
-             placement="left" />
-        <ng-template #actionMenu>
-          <button class="btn btn-primary d-block w-100 mb-2"
-                  (click)="edit(row)">edytuj</button>
-          <button class="btn btn-danger d-block w-100 mb-2"
-                  (click)="remove(row.id)">usuń</button>
-          <button class="btn btn-success d-block w-100">zatwierdź</button>
-        </ng-template>
-      </ng-template>
-    </ngx-datatable-column>
-  </ngx-datatable>
-</div>
-
+<router-outlet></router-outlet>
 

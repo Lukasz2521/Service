@@ -21,5 +21,6 @@ namespace EuroSerwis.Model
         public DateTime Date { get; set; }
 
         public string Phone { get; set; }
+        public InspectionStateEnum InspectionState { get; set; }
     }
 }

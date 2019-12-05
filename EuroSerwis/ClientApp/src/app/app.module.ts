@@ -23,10 +23,7 @@ import { NotificationInterceptor } from './interceptors/notification.interceptor
 @NgModule({
   declarations: [
     AppComponent,
-    InspectionsComponent,
-    LoginComponent,
-    AddInspectionComponent,
-    EditInspectionComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -42,7 +39,12 @@ import { NotificationInterceptor } from './interceptors/notification.interceptor
       InspectionsEffects
     ]),
     RouterModule.forRoot([
-      { /*canActivate: [AuthGuard], */ path: '', component: InspectionsComponent, pathMatch: 'full' },
+      {
+        /*canActivate: [AuthGuard], */
+        path: '',
+        loadChildren: './pages/inspections/inspection.module#InspectionModule',
+        pathMatch: 'full'
+      },
       { path: 'login', component: LoginComponent },
     ]),
   ],
@@ -58,9 +60,5 @@ import { NotificationInterceptor } from './interceptors/notification.interceptor
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [
-    AddInspectionComponent,
-    EditInspectionComponent
-  ]
 })
 export class AppModule { }

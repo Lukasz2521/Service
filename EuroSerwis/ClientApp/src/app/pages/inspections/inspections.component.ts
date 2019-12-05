@@ -6,7 +6,7 @@ import { ModalType } from '../../enums/modal-type.enum';
 import { Store, select } from '@ngrx/store';
 import { InspectionsState } from '../../state/inspections.reducers';
 import { Observable } from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { LoadInspections, DeleteInspection } from '../../state/inspections.actions';
 import { selectAllInspections } from '../..';
 import { ColumnMode, SortType } from '@swimlane/ngx-datatable';
@@ -21,9 +21,6 @@ export class InspectionsComponent implements OnInit {
   tempInspections$: Observable<InspectionModel[]>;
   ColumnMode = ColumnMode;
   SortType = SortType;
-  get isUpcoming() {
-    return true;
-  }
 
   constructor(
     private inspectionService: InspectionService,

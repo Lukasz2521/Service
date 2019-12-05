@@ -16,6 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { InspectionsEffects } from '../../state/inspections.effects';
 import { ToastModule } from '../../toast/toast.module';
 import { NotificationInterceptor } from '../../interceptors/notification.interceptor';
+import { EditorsRoutingModule } from './inspection-routing.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NotificationInterceptor } from '../../interceptors/notification.interce
     NgbModule,
     ToastModule,
     StoreModule.forRoot(reducers),
+    EditorsRoutingModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([
       InspectionsEffects
@@ -48,5 +50,9 @@ import { NotificationInterceptor } from '../../interceptors/notification.interce
       multi: true
     }
   ],
+  entryComponents: [
+    AddInspectionComponent,
+    EditInspectionComponent
+  ]
 })
 export class InspectionModule { }

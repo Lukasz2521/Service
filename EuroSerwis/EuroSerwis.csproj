@@ -35,6 +35,7 @@
     <None Remove="ClientApp\src\app\index.ts" />
     <None Remove="ClientApp\src\app\interceptors\notification.interceptor.ts" />
     <None Remove="ClientApp\src\app\model\user.ts" />
+    <None Remove="ClientApp\src\app\pages\inspections\components\inspectionsList\inspections-list.component.ts" />
     <None Remove="ClientApp\src\app\pages\inspections\inspection-routing.module.ts" />
     <None Remove="ClientApp\src\app\pages\inspections\inspection.module.ts" />
     <None Remove="ClientApp\src\app\pages\login\login.component.ts" />
@@ -63,6 +64,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interceptors\notification.interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\user.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\inspections\components\inspectionsList\inspections-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\inspections\inspection-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\inspections\inspection.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\inspections\inspections.component.ts" />
