@@ -33,7 +33,6 @@ namespace EuroSerwis.Controllers
 
 
         [HttpGet]
-        [Route("/upcoming")]
         public async Task<IActionResult> Get()
         {
             var inspections = await _inspection.Get(false);
@@ -47,6 +46,7 @@ namespace EuroSerwis.Controllers
         }
 
         [HttpGet]
+        [Route("/upcoming")]
         public async Task<IActionResult> GetUpcoming()
         {
             var inspections = await _inspection.Get(true);

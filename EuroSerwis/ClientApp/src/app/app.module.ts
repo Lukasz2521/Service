@@ -6,10 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgbModule, NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
-import { InspectionsComponent } from './pages/inspections/inspections.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AddInspectionComponent } from './components/modals/add-inspection.component';
-import { EditInspectionComponent } from './components/modals/edit-inspection.component';
 import { AuthGuard } from './guards/auth.guard';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './index';
@@ -53,11 +50,6 @@ import { NotificationInterceptor } from './interceptors/notification.interceptor
       provide: NgbDateAdapter,
       useClass: NgbDateNativeAdapter
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: NotificationInterceptor,
-      multi: true
-    }
   ],
   bootstrap: [AppComponent],
 })

@@ -24,7 +24,15 @@ namespace EuroSerwis.Repositories
 
         public async Task<IEnumerable<Inspection>> Get()
         {
-            var inspections = await _context.Inspections.ToListAsync();
+            List<Inspection> inspections;
+            try
+            {
+               inspections = await _context.Inspections.ToListAsync();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
             return inspections;
         }

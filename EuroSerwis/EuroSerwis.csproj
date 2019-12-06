@@ -88,8 +88,6 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\components\forms\" />
-    <Folder Include="ClientApp\src\app\pages\inspections\all\" />
-    <Folder Include="ClientApp\src\app\pages\inspections\upcoming\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

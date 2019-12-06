@@ -1,8 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgbModule, NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { InspectionsComponent } from './inspections.component';
@@ -16,34 +14,32 @@ import { EffectsModule } from '@ngrx/effects';
 import { InspectionsEffects } from '../../state/inspections.effects';
 import { ToastModule } from '../../toast/toast.module';
 import { NotificationInterceptor } from '../../interceptors/notification.interceptor';
-import { EditorsRoutingModule } from './inspection-routing.module';
+import { InspectionRoutingModule } from './inspection-routing.module';
+import { InspectionsListComponent } from './components/inspectionsList/inspections-list.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     InspectionsComponent,
     AddInspectionComponent,
-    EditInspectionComponent
+    EditInspectionComponent,
+    InspectionsListComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    CommonModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgxDatatableModule,
     NgbModule,
-    ToastModule,
     StoreModule.forRoot(reducers),
-    EditorsRoutingModule,
+    InspectionRoutingModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([
       InspectionsEffects
     ]),
   ],
   providers: [
-    {
-      provide: NgbDateAdapter,
-      useClass: NgbDateNativeAdapter
-    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: NotificationInterceptor,
