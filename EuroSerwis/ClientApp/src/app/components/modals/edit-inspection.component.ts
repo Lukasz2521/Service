@@ -11,6 +11,8 @@ import { UpdateInspection } from '../../state/inspections.actions';
 })
 export class EditInspectionComponent {
   title: string = 'Edytuj przegląd';
+  submit: string = 'Edytuj';
+
   inspectionForm: FormGroup;
   get f() { return this.inspectionForm.controls; }
 

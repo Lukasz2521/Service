@@ -11,6 +11,7 @@ import { CreateInspection } from '../../state/inspections.actions';
 })
 export class AddInspectionComponent {
   title: string = 'Dodaj przegląd';
+  submit: string = 'Dodaj';
   inspectionForm: FormGroup;
   get f() { return this.inspectionForm.controls; }
 

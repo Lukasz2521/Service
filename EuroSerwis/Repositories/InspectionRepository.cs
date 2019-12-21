@@ -24,23 +24,18 @@ namespace EuroSerwis.Repositories
 
         public async Task<IEnumerable<Inspection>> Get()
         {
-            List<Inspection> inspections;
-            try
-            {
-               inspections = await _context.Inspections.ToListAsync();
-            }
-            catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            var inspections = await _context.Inspections.ToListAsync();     
 
             return inspections;
         }
 
         public async Task<IEnumerable<Inspection>> GetUpcoming()
         {
+            DateTime n = DateTime.Now;
+
             var inspections = await _context.Inspections.Where(inspection => 
-                Math.Round((inspection.Date - DateTime.Now).TotalDays) < 7
+                Math.Round((inspection.Date - n).TotalDays) <= 7 &&
+                Math.Round((inspection.Date - n).TotalDays) >= 0
             ).ToListAsync();
 
             return inspections;

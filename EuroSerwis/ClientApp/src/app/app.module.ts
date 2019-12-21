@@ -38,9 +38,13 @@ import { NotificationInterceptor } from './interceptors/notification.interceptor
     RouterModule.forRoot([
       {
         /*canActivate: [AuthGuard], */
-        path: '',
+        path: 'inspections',
         loadChildren: './pages/inspections/inspection.module#InspectionModule',
-        pathMatch: 'full'
+      },
+      {
+        path: '',
+        redirectTo: 'inspections',
+        pathMatch: 'full',
       },
       { path: 'login', component: LoginComponent },
     ]),

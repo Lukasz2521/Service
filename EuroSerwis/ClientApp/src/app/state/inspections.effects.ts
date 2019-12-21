@@ -18,7 +18,7 @@ export class InspectionsEffects {
     mergeMap(() => this.inspectionsService.get()
       .pipe(
         map((inspections :InspectionModel[]) => new InspectionsLoaded(inspections)),
-        catchError(() => EMPTY)
+        //catchError(() => EMPTY)
       )
     )
   );

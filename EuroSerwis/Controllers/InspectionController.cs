@@ -46,7 +46,7 @@ namespace EuroSerwis.Controllers
         }
 
         [HttpGet]
-        [Route("/upcoming")]
+        [Route("upcoming")]
         public async Task<IActionResult> GetUpcoming()
         {
             var inspections = await _inspection.Get(true);

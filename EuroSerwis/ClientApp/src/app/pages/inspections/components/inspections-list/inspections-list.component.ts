@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { InspectionService } from '../../../../services/inspection.service';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import InspectionModel from '../../../../model/inspection.model';
 import { ModalService } from '../../../../services/modal.service';
 import { ModalType } from '../../../../enums/modal-type.enum';
@@ -10,31 +9,34 @@ import { map } from 'rxjs/operators';
 import { LoadInspections, DeleteInspection } from '../../../../state/inspections.actions';
 import { selectAllInspections } from '../../../../';
 import { ColumnMode, SortType } from '@swimlane/ngx-datatable';
+import { InspectionService } from '../../../../services/inspection.service';
 
 @Component({
-  selector: 'inspections',
+  selector: 'inspections-list',
   templateUrl: './inspections-list.component.html',
   styleUrls: ['./inspections-list.component.css']
 })
 export class InspectionsListComponent implements OnInit {
-  inspections$: Observable<InspectionModel[]>;
+  @Input() inspections$: Observable<InspectionModel[]>;
   tempInspections$: Observable<InspectionModel[]>;
   ColumnMode = ColumnMode;
   SortType = SortType;
 
   constructor(
-    private inspectionService: InspectionService,
     private modalService: ModalService,
+    private inspectionService: InspectionService,
     private store: Store<InspectionsState>
   ) {
-    this.inspections$ = store.pipe(
-      select(selectAllInspections)
-    );
-    this.tempInspections$ = this.inspections$;
+    //this.inspections$ = store.pipe(
+    //  select(selectAllInspections)
+    //);
+    //this.tempInspections$ = this.inspections$;
   }
 
   ngOnInit(): void {
-    this.getInspections();
+    // this.getInspections();
+    //this.inspections$ = this.inspectionService.get();
+    this.tempInspections$ = this.inspections$;
   }
 
   getInspections() {
