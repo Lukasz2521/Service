@@ -54,7 +54,6 @@ import { InspectionService } from '../../services/inspection.service';
     },
     ModalService,
     InspectionService,
-    //AllInspectionResolve
   ],
   entryComponents: [
     AddInspectionComponent,

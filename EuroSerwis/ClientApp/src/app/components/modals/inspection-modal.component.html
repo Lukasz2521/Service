@@ -80,9 +80,10 @@
                  [ngClass]="{ 'form-error': f.date.invalid && f.date.touched }">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary calendar"
-               type="button"
-               (click)="dp.toggle()"
-               [ngClass]="{ 'form-error': f.date.invalid && f.date.touched }">
+                    type="button"
+                    (click)="dp.toggle()"
+                    [ngClass]="{ 'form-error': f.date.invalid && f.date.touched }">
+              <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
             </button>
           </div>
         </div>
