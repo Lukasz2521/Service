@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgbModule, NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './pages/login/login.component';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './core/guards/auth.guard';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './index';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';

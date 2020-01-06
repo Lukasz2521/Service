@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import InspectionModel from '../../../../model/inspection.model';
-import { ModalService } from '../../../../services/modal.service';
-import { ModalType } from '../../../../enums/modal-type.enum';
+import { ModalService } from '../../../../shared/services/modal.service';
+import { ModalType } from '../../../../shared/enums/modal-type.enum';
 import { Store, select } from '@ngrx/store';
 import { InspectionsState } from '../../../../state/inspections.reducers';
 import { Observable } from 'rxjs';
