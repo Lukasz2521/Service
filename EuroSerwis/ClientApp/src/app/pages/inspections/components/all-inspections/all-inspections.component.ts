@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { InspectionService } from '../../../../services/inspection.service';
+import { InspectionService } from '../../services/inspection.service';
 import { Observable } from 'rxjs';
-import InspectionModel from '../../../../model/inspection.model';
+import InspectionModel from '../../model/inspection.model';
 import { ActivatedRoute } from '@angular/router';
-import { InspectionsState } from '../../../../state/inspections.reducers';
-import { selectAllInspections } from '../../../../';
-import { LoadInspections, DeleteInspection } from '../../../../state/inspections.actions';
+import { InspectionsState } from '../../state/inspections.reducers';
+import { selectAllInspections } from '../..';
+import { LoadInspections, DeleteInspection } from '../../state/inspections.actions';
 
 
 @Component({
@@ -28,5 +28,5 @@ export class AllInspectionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new LoadInspections());
-  } 
+  }
 }

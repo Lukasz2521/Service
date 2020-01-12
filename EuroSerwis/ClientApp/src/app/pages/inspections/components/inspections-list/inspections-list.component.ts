@@ -1,15 +1,15 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import InspectionModel from '../../../../model/inspection.model';
-import { ModalService } from '../../../../shared/services/modal.service';
-import { ModalType } from '../../../../shared/enums/modal-type.enum';
+import InspectionModel from '../../model/inspection.model';
+import { ModalService } from '../../services/modal.service';
+import { ModalType } from '../../enums/modal-type.enum';
 import { Store, select } from '@ngrx/store';
-import { InspectionsState } from '../../../../state/inspections.reducers';
+import { InspectionsState } from '../../state/inspections.reducers';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { LoadInspections, DeleteInspection } from '../../../../state/inspections.actions';
-import { selectAllInspections } from '../../../../';
+import { LoadInspections, DeleteInspection } from '../../state/inspections.actions';
+import { selectAllInspections } from '../..';
 import { ColumnMode, SortType } from '@swimlane/ngx-datatable';
-import { InspectionService } from '../../../../services/inspection.service';
+import { InspectionService } from '../../services/inspection.service';
 
 @Component({
   selector: 'inspections-list',

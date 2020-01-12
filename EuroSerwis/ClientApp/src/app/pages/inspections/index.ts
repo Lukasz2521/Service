@@ -27,7 +27,7 @@ export const selectUpcomingInspections = createSelector(
       if (isUpcomingInspection(state.entities[inspection])) {
         upcomingInspections.push(state.entities[inspection]);
       }
-    }     
+    }
 
     return upcomingInspections;
   }
@@ -38,5 +38,5 @@ const isUpcomingInspection = (inspection: InspectionModel) => {
       const differenceInTime = inspectionDate.getTime() - now.getTime();
       const differenceInDays = differenceInTime / (1000 * 3600 * 24)
 
-      return differenceInDays >= 0 && differenceInDays <= 7; 
+      return differenceInDays >= 0 && differenceInDays <= 7;
 }

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ModalType } from '../enums/modal-type.enum';
 import { NgbModal, NgbModalRef, NgbDate } from '@ng-bootstrap/ng-bootstrap';
-import InspectionModel from '../../model/inspection.model';
-import { AddInspectionComponent } from '../../pages/inspections/components/modals/add-inspection.component-inspection.component';
-import { EditInspectionComponent } from '../../pages/inspections/components/modals/edit-inspection.component-inspection.component';
+import InspectionModel from '../model/inspection.model';
+import { AddInspectionComponent } from '../components/modals/add-inspection.component';
+import { EditInspectionComponent } from '../components/modals/edit-inspection.component';
 
 @Injectable({
   providedIn: 'root',

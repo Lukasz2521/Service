@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../services/authentication.service';
+//import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
-import User from '../../model/user';
+//import User from '../../core/model/user';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
 
   user: FormGroup;
   submitted: boolean = false;
- 
-  constructor(private authService: AuthenticationService,
+
+  constructor(//private authService: AuthenticationService,
     private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -24,14 +24,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login({ value, valid }: { value: User, valid: boolean }) {
+  login({ value, valid }: { value: any, valid: boolean }) {
     this.submitted = true;
 
     if (valid) {
-      this.authService.logIn().subscribe(() => {
-        this.authService.isLoggedIn = true;
-        this.router.navigateByUrl('/');
-      });
+      // this.authService.logIn().subscribe(() => {
+      //   this.authService.isLoggedIn = true;
+      //   this.router.navigateByUrl('/');
+      // });
     }
   }
 }

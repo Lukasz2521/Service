@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { InspectionService } from '../../../../services/inspection.service';
+import { InspectionService } from '../../services/inspection.service';
 import { Observable } from 'rxjs';
-import InspectionModel from '../../../../model/inspection.model';
+import InspectionModel from '../../model/inspection.model';
 import { Store, select } from '@ngrx/store';
-import { InspectionsState } from '../../../../state/inspections.reducers';
-import { LoadInspections } from '../../../../state/inspections.actions';
-import { selectAllInspections, selectUpcomingInspections } from '../../../../';
-import { filter } from 'rxjs/operators';
+import { InspectionsState } from '../../state/inspections.reducers';
+import { LoadInspections } from '../../state/inspections.actions';
+import { selectUpcomingInspections } from '../..';
 
 @Component({
     selector: 'upcoming-inspections',
@@ -19,7 +18,6 @@ export class UpcomingInspectionsComponent implements OnInit {
   constructor(
     private inspectionService: InspectionService,
     private store: Store<InspectionsState>) {
-    //this.inspections$ = this.inspectionService.getUpcoming();
     this.inspections$ = store.pipe(
       select(selectUpcomingInspections),
     )
@@ -27,12 +25,5 @@ export class UpcomingInspectionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new LoadInspections());
-  }
-
-  isUpcomingInspection(inspection: InspectionModel): boolean {
-    const inspectionDate = inspection.date as Date, now = new Date();
-    const differenceInDays = (inspectionDate.getTime() - now.getTime()) / (100 * 3600 * 24);
-
-    return differenceInDays >= 0 && differenceInDays <= 7; 
   }
 }

@@ -5,7 +5,7 @@ import { InspectionService } from '../services/inspection.service';
 import {
   LoadInspections, InspectionActionTypes,
   InspectionsLoaded, InspectionCreated, InspectionDeleted, InspectionUpdated
-} from '../state/inspections.actions';
+} from './inspections.actions';
 import { EMPTY } from 'rxjs';
 import InspectionModel from '../model/inspection.model';
 
@@ -18,7 +18,7 @@ export class InspectionsEffects {
     mergeMap(() => this.inspectionsService.get()
       .pipe(
         map((inspections :InspectionModel[]) => new InspectionsLoaded(inspections)),
-        //catchError(() => EMPTY)
+        catchError(() => EMPTY)
       )
     )
   );

@@ -1,7 +1,7 @@
-import InspectionModel from "../model/inspection.model";
+
 import { InspectionActionTypes } from "./inspections.actions";
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-
+import  InspectionModel from '../model/inspection.model';
 
 export interface InspectionsState extends EntityState<InspectionModel> {
   inspections: InspectionModel[];

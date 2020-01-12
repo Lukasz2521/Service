@@ -9,13 +9,13 @@ import { NgbModule, NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/n
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from './index';
+import { reducers } from './pages/inspections/index';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { InspectionsEffects } from './state/inspections.effects';
+import { InspectionsEffects } from './pages/inspections/state/inspections.effects';
 import { ToastModule } from './toast/toast.module';
-import { NotificationInterceptor } from './interceptors/notification.interceptor';
+import { NotificationInterceptor } from './toast/interceptors/notification.interceptor';
 
 @NgModule({
   declarations: [

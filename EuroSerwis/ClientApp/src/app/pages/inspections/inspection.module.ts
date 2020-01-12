@@ -1,6 +1,6 @@
 import { InspectionService } from './services/inspection.service';
-import { EditInspectionComponent } from './components/modals/edit-inspection.component
-import { AddInspectionComponent } from './components/modals/add-inspection.component
+import { EditInspectionComponent } from './components/modals/edit-inspection.component';
+import { AddInspectionComponent } from './components/modals/add-inspection.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -9,20 +9,20 @@ import { NgbModule, NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/n
 import { InspectionsComponent } from './inspections.component';
 
 import { StoreModule } from '@ngrx/store';
-import { reducers } from '../../index';
+import { reducers } from './index';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../../../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { InspectionsEffects } from '../../state/inspections.effects';
+import { InspectionsEffects } from './state/inspections.effects';
 import { ToastModule } from '../../toast/toast.module';
-import { NotificationInterceptor } from '../../interceptors/notification.interceptor';
+//import { NotificationInterceptor } from '../../../interceptors/notification.interceptor';
 
 import { InspectionRoutingModule } from './inspection-routing.module';
 import { InspectionsListComponent } from './components/inspections-list/inspections-list.component';
 import { CommonModule } from '@angular/common';
 import { UpcomingInspectionsComponent } from './components/upcoming-inspections/upcoming-inspections.component';
 import { AllInspectionsComponent } from './components/all-inspections/all-inspections.component';
-import { ModalService } from '../../shared/services/modal.service';
+import { ModalService } from './services/modal.service';
 
 @NgModule({
   declarations: [
@@ -48,11 +48,11 @@ import { ModalService } from '../../shared/services/modal.service';
     ]),
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: NotificationInterceptor,
-      multi: true
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: NotificationInterceptor,
+    //   multi: true
+    // },
     ModalService,
     InspectionService,
   ],
