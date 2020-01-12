@@ -48,11 +48,6 @@ import { ModalService } from './services/modal.service';
     ]),
   ],
   providers: [
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: NotificationInterceptor,
-    //   multi: true
-    // },
     ModalService,
     InspectionService,
   ],
