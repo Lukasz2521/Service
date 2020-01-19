@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img
+      src="./assets/inspection.svg"
+      width="30"
+      height="30"
+      class="d-inline-block align-top"
+      alt="application-logo"
+    />
+    EuroSerwis - Przeglądy
+  </a>
+  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="">
+        Użytkownicy
+      </a>
+    </li>
+    <li class="nav-item dropdown">
+        <div ngbDropdown placement="bottom-right">
+            <a class="nav-link" id="dropdownBasic2" ngbDropdownToggle>Przeglądy</a>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+                <button ngbDropdownItem routerLink="">Wszystkie</button>
+                <button ngbDropdownItem routerLink="upcoming">Nadchodzące</button>
+                <button ngbDropdownItem routerLink="done">Wykonane</button>
+                <button ngbDropdownItem routerLink="undone">Niewykonane</button>
+            </div>
+        </div>
+    </li>
+  </ul>
+  <button class="btn btn-outline-danger right">Wyloguj</button>
+</nav>

@@ -15,6 +15,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { InspectionsEffects } from './pages/inspections/state/inspections.effects';
 import { ToastModule } from './toast/toast.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -34,19 +35,7 @@ import { ToastModule } from './toast/toast.module';
     EffectsModule.forRoot([
       InspectionsEffects
     ]),
-    RouterModule.forRoot([
-      {
-        /*canActivate: [AuthGuard], */
-        path: 'inspections',
-        loadChildren: './pages/inspections/inspection.module#InspectionModule',
-      },
-      {
-        path: '',
-        redirectTo: 'inspections',
-        pathMatch: 'full',
-      },
-      { path: 'login', component: LoginComponent },
-    ]),
+    AppRoutingModule
   ],
   providers: [
     {

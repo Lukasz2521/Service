@@ -23,6 +23,7 @@ import { CommonModule } from '@angular/common';
 import { UpcomingInspectionsComponent } from './components/upcoming-inspections/upcoming-inspections.component';
 import { AllInspectionsComponent } from './components/all-inspections/all-inspections.component';
 import { ModalService } from './services/modal.service';
+import { CoreModule } from 'src/app/core/core.module';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ModalService } from './services/modal.service';
     EffectsModule.forRoot([
       InspectionsEffects
     ]),
+    CoreModule
   ],
   providers: [
     ModalService,
