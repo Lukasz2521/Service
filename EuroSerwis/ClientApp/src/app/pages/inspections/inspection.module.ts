@@ -1,3 +1,7 @@
+import { ConfirmInspectionComponent } from './components/modals/confirm-inspection/confirm-inspection.component';
+import { RemoveInspectionComponent } from './components/modals/remove-inspection/remove-inspection.component';
+import { UndoneInspectionsComponent } from './components/undone-inspections/undone-inspections.component';
+import { DoneInspectionsComponent } from './components/done-inspections/done-inspections.component';
 import { InspectionService } from './services/inspection.service';
 import { EditInspectionComponent } from './components/modals/edit-inspection.component';
 import { AddInspectionComponent } from './components/modals/add-inspection.component';
@@ -32,7 +36,11 @@ import { CoreModule } from 'src/app/core/core.module';
     EditInspectionComponent,
     InspectionsListComponent,
     UpcomingInspectionsComponent,
-    AllInspectionsComponent
+    AllInspectionsComponent,
+    DoneInspectionsComponent,
+    UndoneInspectionsComponent,
+    RemoveInspectionComponent,
+    ConfirmInspectionComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +63,9 @@ import { CoreModule } from 'src/app/core/core.module';
   ],
   entryComponents: [
     AddInspectionComponent,
-    EditInspectionComponent
+    EditInspectionComponent,
+    RemoveInspectionComponent,
+    ConfirmInspectionComponent
   ]
 })
 export class InspectionModule { }

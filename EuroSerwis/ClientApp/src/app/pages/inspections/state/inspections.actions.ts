@@ -1,5 +1,6 @@
 import { Action } from "@ngrx/store";
 import InspectionModel from "../model/inspection.model";
+import { InspectionGetQuery } from "../services/inspection.service";
 
 export enum InspectionActionTypes {
   LoadInspections = 'Load inspections',
@@ -14,6 +15,8 @@ export enum InspectionActionTypes {
 
 export class LoadInspections implements Action {
   readonly type = InspectionActionTypes.LoadInspections;
+
+  constructor(private payload?: InspectionGetQuery) {}
 }
 
 export class InspectionsLoaded implements Action {

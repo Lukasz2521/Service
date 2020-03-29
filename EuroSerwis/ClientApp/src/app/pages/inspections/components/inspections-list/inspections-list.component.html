@@ -52,7 +52,10 @@
                   (click)="edit(row)">edytuj</button>
           <button class="btn btn-danger d-block w-100 mb-2"
                   (click)="remove(row.id)">usuń</button>
-          <button class="btn btn-success d-block w-100">zatwierdź</button>
+          <button class="btn btn-success d-block w-100"
+                  (click)="confirmInspection()">
+                  zatwierdź
+          </button>
         </ng-template>
       </ng-template>
     </ngx-datatable-column>

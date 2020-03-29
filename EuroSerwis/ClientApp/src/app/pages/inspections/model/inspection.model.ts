@@ -1,11 +1,11 @@
 import { NgbDate } from "@ng-bootstrap/ng-bootstrap";
 
-export default class InspectionModel {
-  public id: number;
-  public name: string;
-  public surname: string;
-  public address: string;
-  public county: string;
-  public date: string | Date | NgbDate;
-  public phone: string;
+export default interface InspectionModel {
+  id: number;
+  name: string;
+  surname: string;
+  address: string;
+  county: string;
+  date: string | Date | NgbDate;
+  phone: string;
 }

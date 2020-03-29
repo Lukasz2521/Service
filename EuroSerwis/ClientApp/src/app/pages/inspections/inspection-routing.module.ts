@@ -1,3 +1,5 @@
+import { UndoneInspectionsComponent } from './components/undone-inspections/undone-inspections.component';
+import { DoneInspectionsComponent } from './components/done-inspections/done-inspections.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InspectionsComponent } from './inspections.component';
@@ -8,7 +10,7 @@ import { UpcomingInspectionsComponent } from './components/upcoming-inspections/
 const routes: Routes = [
   {
     path: '',
-    component: InspectionsComponent, 
+    component: InspectionsComponent,
     children: [
       {
         path: '',
@@ -17,6 +19,14 @@ const routes: Routes = [
       {
         path: 'upcoming',
         component: UpcomingInspectionsComponent
+      },
+      {
+        path: 'done',
+        component: DoneInspectionsComponent
+      },
+      {
+        path: 'undone',
+        component: UndoneInspectionsComponent
       }
     ]
   }

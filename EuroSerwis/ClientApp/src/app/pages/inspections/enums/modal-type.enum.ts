@@ -1,4 +1,5 @@
 export enum ModalType {
   AddInspection,
-  EditInspection
+  EditInspection,
+  RemoveInspection
 }

@@ -1,1 +1,50 @@
-<div>Użytkownicy</div>
+
+<router-outlet></router-outlet>
+<!-- <div class="container">
+    <ngx-datatable class="bootstrap"
+        [rows]="inspections$ | async"
+        [columnMode]="ColumnMode.force"
+        [headerHeight]="50"
+        [rowHeight]="60">
+        <ngx-datatable-column name="Imię" minWidth="80" prop="name">
+            <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+            {{ row.name }}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Nazwisko" minWidth="80" prop="surname">
+            <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+            {{ row.surname }}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Adres" minWidth="80" prop="address">
+            <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+            {{ row.address }}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Data przeglądu" minWidth="80" prop="date">
+            <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+            {{ row.date | date:'yyyy-MM-dd' }}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Numer telefonu" minWidth="80">
+            <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+            {{ row.phone }}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column minWidth="80" name="Akcja">
+            <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+                <img src="./assets/settings.svg"
+                class="action-btn"
+                [ngbPopover]="actionMenu"
+                placement="left" />
+                <ng-template #actionMenu>
+                    <button class="btn btn-primary d-block w-100 mb-2"
+                        (click)="edit(row)">edytuj</button>
+                    <button class="btn btn-danger d-block w-100 mb-2"
+                        (click)="remove(row.id)">usuń</button>
+                    <button class="btn btn-success d-block w-100">zatwierdź</button>
+                </ng-template>
+            </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+</div> -->

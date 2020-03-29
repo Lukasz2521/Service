@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import { map, mergeMap, catchError } from 'rxjs/operators';
-import { InspectionService } from '../services/inspection.service';
+import { InspectionService, InspectionGetQuery } from '../services/inspection.service';
 import {
   LoadInspections, InspectionActionTypes,
   InspectionsLoaded, InspectionCreated, InspectionDeleted, InspectionUpdated
@@ -15,7 +15,7 @@ export class InspectionsEffects {
   @Effect()
   loadInspections$ = this.actions$.pipe(
     ofType(InspectionActionTypes.LoadInspections),
-    mergeMap(() => this.inspectionsService.get()
+    mergeMap(({ payload }) => this.inspectionsService.get(payload)
       .pipe(
         map((inspections :InspectionModel[]) => new InspectionsLoaded(inspections)),
         catchError(() => EMPTY)

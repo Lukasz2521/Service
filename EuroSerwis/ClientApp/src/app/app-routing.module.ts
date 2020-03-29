@@ -6,19 +6,19 @@ import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
     {
-        path: 'users',
-        loadChildren: ''
-    },
-    {
         /*canActivate: [AuthGuard], */
         path: 'inspections',
         loadChildren: './pages/inspections/inspection.module#InspectionModule',
     },
     {
-        path: '',
-        redirectTo: 'inspections',
-        pathMatch: 'full',
+        path: 'users',
+        loadChildren: './pages/users/users.module#UsersModule',
     },
+    // {
+    //     path: '',
+    //     redirectTo: 'inspections',
+    //     pathMatch: 'full',
+    // },
     {
         path: 'login',
         component: LoginComponent
@@ -26,8 +26,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
+    imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
 })
 export class AppRoutingModule { }
-
